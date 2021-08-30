@@ -11,9 +11,12 @@ class contractController : public controller
 private:
     Assicurati* model;
     contractScene* view;
+    Vector<DeepPtr<Assicurazione>>::iterator it;
 public:
     contractController(Assicurati*);
     contractScene* getScene() const;
+public slots:
+    void deleteMember();
 };
 
 #endif // CONTRACTCONTROLLER_H
