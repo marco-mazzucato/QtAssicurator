@@ -28,6 +28,7 @@ SOURCES += \
     model/assvita.cpp \
     model/deepptr.cpp \
     main.cpp \
+    view/contractscene.cpp \
     view/mainscene.cpp \
     view/mainwindow.cpp \
     view/mainwindowview.cpp \
@@ -47,6 +48,7 @@ HEADERS += \
     model/assimmobili.h \
     model/assvita.h \
     model/deepptr.h \
+    view/contractscene.h \
     view/mainscene.h \
     view/mainwindow.h \
     view/mainwindowview.h \
