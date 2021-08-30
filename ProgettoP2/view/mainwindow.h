@@ -6,7 +6,8 @@
 #include "mainscene.h"
 #include "addscene.h"
 #include "viewscene.h"
-#include "controller/controller.h"
+#include "controller/addcontroller.h"
+//#include "controller/listcontroller.h"
 
 class MainWindow : public QMainWindow
 {
@@ -18,6 +19,9 @@ public:
 
 private:
     mainwindowview* view;
+    //Assicurati* m;
+    //addcontroller* ac;
+    //listcontroller* lc;
     controller* c;
 
 public slots:

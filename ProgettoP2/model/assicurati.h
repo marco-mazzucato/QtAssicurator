@@ -7,7 +7,7 @@
 #include "vector.h"
 #include "deepptr.h" // vedere cosa manca includere
 
-class Assicurati
+class Assicurati: public QObject
 {
     Q_OBJECT
 private:
@@ -23,7 +23,7 @@ public:
 public slots:
 
     void addAss(Assicurazione*);
-    void removeAss(std::string);//bohhh
+    void removeAss(int);//bohhh
 
 };
 

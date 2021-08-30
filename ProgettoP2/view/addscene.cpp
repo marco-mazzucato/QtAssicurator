@@ -1,4 +1,5 @@
 #include "addscene.h"
+#include <qdebug.h>
 
 addScene::addScene(): _nome(new QLineEdit()), _cognome(new QLineEdit()), _codf(new QLineEdit()), _eta(new QLineEdit()), _impVers(new QLineEdit()), _costoB(new QLineEdit()), _cil(new QLineEdit()), _cav(new QLineEdit()), _com(new QLineEdit()), _mq(new QLineEdit()), _fascia(new QComboBox()), _neo(new QCheckBox("Neopatentato")), _edi(new QCheckBox("Edificio")), fascia(new QLabel()), impVers(new QLabel()), costoB(new QLabel()), cil(new QLabel()), cav(new QLabel()), com(new QLabel()), mq(new QLabel()), _data(new QDateTimeEdit(QDate::currentDate())), lastPressed('n')
 {
@@ -263,6 +264,11 @@ bool addScene::isEdi() const
     return _edi->text().toLocal8Bit().constData();
 }
 
+char addScene::pressed() const
+{
+    return lastPressed;
+}
+
 void addScene::showVita()
 {
     if(lastPressed=='v')
@@ -289,6 +295,10 @@ void addScene::showVita()
 }
 
 void addScene::showRCA(){
+    if(lastPressed=='a')
+        lastPressed='n';
+    else
+        lastPressed='a';
     costoB->setVisible(true);
     _costoB->setVisible(true);
     cil->setVisible(!cil->isVisible());
@@ -308,6 +318,10 @@ void addScene::showRCA(){
 }
 
 void addScene::showImm(){
+    if(lastPressed=='i')
+        lastPressed='n';
+    else
+        lastPressed='i';
     costoB->setVisible(true);
     _costoB->setVisible(true);
     com->setVisible(!com->isVisible());

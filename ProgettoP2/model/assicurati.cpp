@@ -16,6 +16,10 @@ int Assicurati::getNewId() const
     return maxid+1;
 }
 
+void Assicurati::addAss(Assicurazione *a) {Ass.push_back(a);}
+
+void Assicurati::removeAss(int i) {Ass.erase(i);}
+
 //void addAss()
 
 /*void Assicurati::removeAss(std::string cod){
