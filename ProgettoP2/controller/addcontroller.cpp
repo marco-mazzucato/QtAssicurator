@@ -30,8 +30,8 @@ void addController::checkParams()
     }
     if(check)
         buildAss();
-    //else
-        //view->showError();
+    else
+        view->showError();
 }
 
 void addController::buildAss()

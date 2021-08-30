@@ -269,12 +269,35 @@ char addScene::pressed() const
     return lastPressed;
 }
 
+void addScene::showError()
+{
+    QTimer* t=new QTimer();
+    t->setSingleShot(true);
+    QLabel* msg=new QLabel("Assicurazione non aggiunta,\nseleziona un tipo di assicurazione\ne compila tutti i campi");
+    msg->setGeometry(width()/2-200,height()/2-75,400,150);
+    msg->setStyleSheet("border: solid 3px black;"
+                       "padding: 10px;"
+                       "border-radius: 15px;"
+                       "font-size: 23px;"
+                       "background: rgba(255,255,255,0.1);"
+                       "color: red;");
+    addWidget(msg);
+    t->start(5000);
+    connect(t, &QTimer::timeout, msg, [=](){delete msg;});
+}
+
 void addScene::showVita()
 {
-    if(lastPressed=='v')
+    if(lastPressed=='v'){
         lastPressed='n';
-    else
+        vita->setStyleSheet("font-size:25px;""background-color:grey;");
+    }
+    else{
         lastPressed='v';
+        vita->setStyleSheet("font-size:25px;""background-color:azure;");
+    }
+    rca->setStyleSheet("font-size:25px;""background-color:grey;");
+    imm->setStyleSheet("font-size:25px;""background-color:grey;");
     fascia->setVisible(!fascia->isVisible());
     _fascia->setVisible(!_fascia->isVisible());
     impVers->setVisible(!impVers->isVisible());
@@ -295,10 +318,16 @@ void addScene::showVita()
 }
 
 void addScene::showRCA(){
-    if(lastPressed=='a')
+    if(lastPressed=='a'){
         lastPressed='n';
-    else
+        rca->setStyleSheet("font-size:25px;""background-color:grey;");
+    }
+    else{
         lastPressed='a';
+        rca->setStyleSheet("font-size:25px;""background-color:azure;");
+    }
+    vita->setStyleSheet("font-size:25px;""background-color:grey;");
+    imm->setStyleSheet("font-size:25px;""background-color:grey;");
     costoB->setVisible(true);
     _costoB->setVisible(true);
     cil->setVisible(!cil->isVisible());
@@ -318,10 +347,16 @@ void addScene::showRCA(){
 }
 
 void addScene::showImm(){
-    if(lastPressed=='i')
+    if(lastPressed=='i'){
         lastPressed='n';
-    else
+        imm->setStyleSheet("font-size:25px;""background-color:grey;");
+    }
+    else{
         lastPressed='i';
+        imm->setStyleSheet("font-size:25px;""background-color:azure;");
+    }
+    rca->setStyleSheet("font-size:25px;""background-color:grey;");
+    vita->setStyleSheet("font-size:25px;""background-color:grey;");
     costoB->setVisible(true);
     _costoB->setVisible(true);
     com->setVisible(!com->isVisible());

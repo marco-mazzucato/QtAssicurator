@@ -11,6 +11,7 @@
 #include <qdatetimeedit.h>
 #include <qcombobox.h>
 #include <qcheckbox.h>
+#include <QTimer>
 
 class addScene : public QGraphicsScene
 {
@@ -41,6 +42,7 @@ public:
     unsigned int getMq() const;
     bool isEdi() const;
     char pressed() const;
+    void showError();
 
 signals:
     void onAggPress();
