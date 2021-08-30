@@ -43,10 +43,12 @@ public:
     unsigned int getMq() const;
     bool isEdi() const;
     char pressed() const;
+    void showError();
     void showSuccess();
 
 signals:
     void onAggPress();
+    void onHomePress();
 
 public slots:
     void showVita();

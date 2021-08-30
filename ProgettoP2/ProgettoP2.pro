@@ -17,7 +17,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     controller/addcontroller.cpp \
+    controller/contractcontroller.cpp \
     controller/controller.cpp \
+    controller/maincontroller.cpp \
     view/addscene.cpp \
     model/assbeni.cpp \
     model/assicurati.cpp \
@@ -36,7 +38,9 @@ SOURCES += \
 
 HEADERS += \
     controller/addcontroller.h \
+    controller/contractcontroller.h \
     controller/controller.h \
+    controller/maincontroller.h \
     view/addscene.h \
     model/assbeni.h \
     model/assicurati.h \
