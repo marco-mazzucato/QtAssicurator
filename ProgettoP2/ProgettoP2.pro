@@ -16,6 +16,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    controller/addcontroller.cpp \
+    controller/controller.cpp \
     view/addscene.cpp \
     model/assbeni.cpp \
     model/assicurati.cpp \
@@ -32,6 +34,8 @@ SOURCES += \
     view/viewscene.cpp
 
 HEADERS += \
+    controller/addcontroller.h \
+    controller/controller.h \
     view/addscene.h \
     model/assbeni.h \
     model/assicurati.h \

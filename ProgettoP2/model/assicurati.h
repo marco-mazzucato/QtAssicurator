@@ -1,5 +1,6 @@
 #ifndef ASSICURATI_H
 #define ASSICURATI_H
+#include <QObject> // vedere
 #include "assvita.h"
 #include "rca.h"
 #include "assimmobili.h"
@@ -8,6 +9,7 @@
 
 class Assicurati
 {
+    Q_OBJECT
 private:
     unsigned int currentAss;
     Vector<DeepPtr<Assicurazione>> Ass;
@@ -15,11 +17,13 @@ private:
 public:
     Assicurati();
 
-    void addAss(Assicurazione*);
-    void removeAss(std::string);//bohhh
     Assicurazione& cercaPerNomeCognome(std::string, std::string);
     Assicurazione& cercaPerCodice(std::string);
 
+public slots:
+
+    void addAss(Assicurazione*);
+    void removeAss(std::string);//bohhh
 
 };
 

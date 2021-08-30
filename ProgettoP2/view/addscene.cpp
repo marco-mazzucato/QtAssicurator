@@ -8,8 +8,10 @@ addScene::addScene(): _nome(new QLineEdit()), _cognome(new QLineEdit()), _codf(n
         QValidator* chrVal = new QRegExpValidator(chr);
     QRegExp cf("^[a-zA-Z]{6,6}\\d{2,2}[a-zA-Z]\\d{2,2}[a-zA-Z]\\d{3,3}[a-zA-Z]$");
             QValidator* cfVal = new QRegExpValidator(cf);
-    QRegExp et("{1,2}\\d");
+    QRegExp et("\\d{1,2}");
             QValidator* etVal = new QRegExpValidator(et);
+    QRegExp eu("\\d{1,10}");
+            QValidator* euVal = new QRegExpValidator(eu);
 
     QPushButton* vita = new QPushButton("Nuova assicurazione vita");
     vita->setGeometry(50,50,350,150);
@@ -29,7 +31,7 @@ addScene::addScene(): _nome(new QLineEdit()), _cognome(new QLineEdit()), _codf(n
     QLabel* nome = new QLabel();
     nome->setText("Nome:");
     nome->setGeometry(50,230,60,30);
-    nome->setStyleSheet("font-size:20px;""background-color:lightGray;");
+    nome->setStyleSheet("font-size:20px;""background-color:rgba(255,255,255,0);");
     addWidget(nome);
 
     _nome->setGeometry(200, 230, 200, 30);
@@ -40,7 +42,7 @@ addScene::addScene(): _nome(new QLineEdit()), _cognome(new QLineEdit()), _codf(n
     QLabel* cogn = new QLabel();
     cogn->setText("Cognome:");
     cogn->setGeometry(50,275,90,30);
-    cogn->setStyleSheet("font-size:20px;""background-color:lightGray;");
+    cogn->setStyleSheet("font-size:20px;""background-color:rgba(255,255,255,0);");
     addWidget(cogn);
 
     _cognome->setGeometry(200, 275, 200, 30);
@@ -51,18 +53,19 @@ addScene::addScene(): _nome(new QLineEdit()), _cognome(new QLineEdit()), _codf(n
     QLabel* codf = new QLabel();
     codf->setText("Cod. Fiscale:");
     codf->setGeometry(50,320,110,30);
-    codf->setStyleSheet("font-size:20px;""background-color:lightGray;");
+    codf->setStyleSheet("font-size:20px;""background-color:rgba(255,255,255,0);");
     addWidget(codf);
 
     _codf->setGeometry(200, 320, 200, 30);
     _codf->setStyleSheet("font-size:17px;");
     _codf->setValidator(cfVal);
+    connect(_codf, &QLineEdit::textChanged, _codf, [=](){_codf->setText(_codf->text().toUpper());});
     addWidget(_codf);
 
     QLabel* eta = new QLabel();
     eta->setText("Anni:");
     eta->setGeometry(50,365,50,30);
-    eta->setStyleSheet("font-size:20px;""background-color:lightGray;");
+    eta->setStyleSheet("font-size:20px;""background-color:rgba(255,255,255,0);");
     addWidget(eta);
 
     _eta->setGeometry(200, 365, 70, 30);
@@ -73,30 +76,30 @@ addScene::addScene(): _nome(new QLineEdit()), _cognome(new QLineEdit()), _codf(n
     QLabel* data = new QLabel();
     data->setText("Data:");
     data->setGeometry(50,410,48,30);
-    data->setStyleSheet("font-size:20px;""background-color:lightGray;");
+    data->setStyleSheet("font-size:20px;""background-color:rgba(255,255,255,0);");
     addWidget(data);
 
     _data->setMinimumDate(QDate::currentDate().addDays(-365));
     _data->setGeometry(200, 410, 200, 30);
-    _data->setStyleSheet("font-size:17px;""background-color:lightGray;");
+    _data->setStyleSheet("font-size:17px;""background-color:rgba(255,255,255,0);");
     _data->setDisplayFormat("dd.MM.yyyy");
     addWidget(_data);
 
     impVers->setText("Importo(euro):");
     impVers->setGeometry(50,455,160,30);
-    impVers->setStyleSheet("font-size:20px;""background-color:lightGray;");
+    impVers->setStyleSheet("font-size:20px;""background-color:rgba(255,255,255,0);");
     addWidget(impVers);
     impVers->setVisible(false);
 
     _impVers->setGeometry(200, 455, 80, 30);
     _impVers->setStyleSheet("font-size:17px;");
-    _impVers->setValidator(chrVal);
+    _impVers->setValidator(euVal);
     addWidget(_impVers);
     _impVers->setVisible(false);
 
     fascia->setText("Fascia:");
     fascia->setGeometry(50,500,60,30);
-    fascia->setStyleSheet("font-size:20px;""background-color:lightGray;");
+    fascia->setStyleSheet("font-size:20px;""background-color:rgba(255,255,255,0);");
     addWidget(fascia);
     fascia->setVisible(false);
 
@@ -111,48 +114,48 @@ addScene::addScene(): _nome(new QLineEdit()), _cognome(new QLineEdit()), _codf(n
 
     costoB->setText("Costo del bene:");
     costoB->setGeometry(50,455,190,30);
-    costoB->setStyleSheet("font-size:20px;""background-color:lightGray;");
+    costoB->setStyleSheet("font-size:20px;""background-color:rgba(255,255,255,0);");
     addWidget(costoB);
     costoB->setVisible(false);
 
     _costoB->setGeometry(200, 455, 80, 30);
     _costoB->setStyleSheet("font-size:17px;");
-    _costoB->setValidator(chrVal);
+    _costoB->setValidator(euVal);
     addWidget(_costoB);
     _costoB->setVisible(false);
 
     cil->setText("Cilindrata:");
     cil->setGeometry(50,500,150,30);
-    cil->setStyleSheet("font-size:20px;""background-color:lightGray;");
+    cil->setStyleSheet("font-size:20px;""background-color:rgba(255,255,255,0);");
     addWidget(cil);
     cil->setVisible(false);
 
     _cil->setGeometry(200, 500, 70, 30);
     _cil->setStyleSheet("font-size:17px;");
-    _cil->setValidator(chrVal);
+    _cil->setValidator(euVal);
     addWidget(_cil);
     _cil->setVisible(false);
 
     cav->setText("Cavalli:");
     cav->setGeometry(50,545,140,30);
-    cav->setStyleSheet("font-size:20px;""background-color:lightGray;");
+    cav->setStyleSheet("font-size:20px;""background-color:rgba(255,255,255,0);");
     addWidget(cav);
     cav->setVisible(false);
 
     _cav->setGeometry(200, 545, 70, 30);
     _cav->setStyleSheet("font-size:17px;");
-    _cav->setValidator(chrVal);
+    _cav->setValidator(euVal);
     addWidget(_cav);
     _cav->setVisible(false);
 
     _neo->setGeometry(50,590,150,30);
-    _neo->setStyleSheet("font-size:20px;""background-color:lightGray;");
+    _neo->setStyleSheet("font-size:20px;""background-color:rgba(255,255,255,0);");
     addWidget(_neo);
     _neo->setVisible(false);
 
     com->setText("Comune:");
     com->setGeometry(50,500,120,30);
-    com->setStyleSheet("font-size:20px;""background-color:lightGray;");
+    com->setStyleSheet("font-size:20px;""background-color:rgba(255,255,255,0);");
     addWidget(com);
     com->setVisible(false);
 
@@ -164,18 +167,18 @@ addScene::addScene(): _nome(new QLineEdit()), _cognome(new QLineEdit()), _codf(n
 
     mq->setText("Metri quadrati:");
     mq->setGeometry(50,545,150,30);
-    mq->setStyleSheet("font-size:20px;""background-color:lightGray;");
+    mq->setStyleSheet("font-size:20px;""background-color:rgba(255,255,255,0);");
     addWidget(mq);
     mq->setVisible(false);
 
     _mq->setGeometry(200, 545, 70, 30);
     _mq->setStyleSheet("font-size:17px;");
-    _mq->setValidator(chrVal);
+    _mq->setValidator(euVal);
     addWidget(_mq);
     _mq->setVisible(false);
 
     _edi->setGeometry(50, 590, 120, 30);
-    _edi->setStyleSheet("font-size:20px;""background-color:lightGray;");
+    _edi->setStyleSheet("font-size:20px;""background-color:rgba(255,255,255,0);");
     addWidget(_edi);
     _edi->setVisible(false);
 
