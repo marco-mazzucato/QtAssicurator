@@ -17,6 +17,7 @@ class addScene : public QGraphicsScene
 {
     Q_OBJECT
 private:
+    QPushButton *vita, *rca, *imm;
     QLineEdit *_nome, *_cognome, *_codf, *_eta,
                     *_impVers, *_costoB, *_cil,
                     *_cav, *_com, *_mq;
@@ -43,6 +44,7 @@ public:
     bool isEdi() const;
     char pressed() const;
     void showError();
+    void showSuccess();
 
 signals:
     void onAggPress();
