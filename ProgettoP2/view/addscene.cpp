@@ -17,6 +17,7 @@ addScene::addScene(): vita(new QPushButton("Nuova assicurazione vita")), rca(new
     QPushButton* home = new QPushButton("Menu");
     home->setGeometry(width()-200,height()-400, 200,200);
     addWidget(home);
+    connect(home, &QPushButton::clicked, this, &addScene::onHomePress);
 
     vita->setGeometry(50,50,350,150);
     vita->setStyleSheet("font-size:25px;""background-color:grey;");
@@ -190,7 +191,6 @@ addScene::addScene(): vita(new QPushButton("Nuova assicurazione vita")), rca(new
     addWidget(agg);
 
     connect(agg, &QPushButton::clicked, this, &addScene::onAggPress);
-    connect(home, &QPushButton::clicked, this, &addScene::onHomePress);
     connect(vita, &QPushButton::clicked, this, &addScene::showVita);
     connect(rca, &QPushButton::clicked, this, &addScene::showRCA);
     connect(imm, &QPushButton::clicked, this, &addScene::showImm);

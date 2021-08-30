@@ -3,7 +3,7 @@
 addController::addController(Assicurati* a): model(a), view(new addScene())
 {
     connect(view, &addScene::onAggPress, this, &addController::checkParams);
-    connect(view, &addScene::onHomePress, this, [=](){changeScene('m');});
+    connect(view, &addScene::onHomePress, this, [=](){emit changeScene('m');});
 }
 
 void addController::checkParams()

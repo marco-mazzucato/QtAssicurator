@@ -1,5 +1,7 @@
 debug/addcontroller.o
+debug/contractcontroller.o
 debug/controller.o
+debug/maincontroller.o
 debug/addscene.o
 debug/assbeni.o
 debug/assicurati.o
@@ -8,6 +10,7 @@ debug/assimmobili.o
 debug/assvita.o
 debug/deepptr.o
 debug/main.o
+debug/contractscene.o
 debug/mainscene.o
 debug/mainwindow.o
 debug/mainwindowview.o
@@ -15,9 +18,12 @@ debug/rca.o
 debug/vector.o
 debug/viewscene.o
 debug/moc_addcontroller.o
+debug/moc_contractcontroller.o
 debug/moc_controller.o
+debug/moc_maincontroller.o
 debug/moc_addscene.o
 debug/moc_assicurati.o
+debug/moc_contractscene.o
 debug/moc_mainscene.o
 debug/moc_mainwindow.o
 debug/moc_viewscene.o

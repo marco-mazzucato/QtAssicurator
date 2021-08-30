@@ -1,5 +1,7 @@
 release/addcontroller.o
+release/contractcontroller.o
 release/controller.o
+release/maincontroller.o
 release/addscene.o
 release/assbeni.o
 release/assicurati.o
@@ -8,6 +10,7 @@ release/assimmobili.o
 release/assvita.o
 release/deepptr.o
 release/main.o
+release/contractscene.o
 release/mainscene.o
 release/mainwindow.o
 release/mainwindowview.o
@@ -15,9 +18,12 @@ release/rca.o
 release/vector.o
 release/viewscene.o
 release/moc_addcontroller.o
+release/moc_contractcontroller.o
 release/moc_controller.o
+release/moc_maincontroller.o
 release/moc_addscene.o
 release/moc_assicurati.o
+release/moc_contractscene.o
 release/moc_mainscene.o
 release/moc_mainwindow.o
 release/moc_viewscene.o

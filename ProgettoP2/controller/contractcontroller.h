@@ -13,6 +13,7 @@ private:
     contractScene* view;
 public:
     contractController(Assicurati*);
+    contractScene* getScene() const;
 };
 
 #endif // CONTRACTCONTROLLER_H

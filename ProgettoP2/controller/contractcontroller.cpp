@@ -4,3 +4,8 @@ contractController::contractController(Assicurati *a):model(a), view(new contrac
 {
 
 }
+
+contractScene *contractController::getScene() const
+{
+    return view;
+}
