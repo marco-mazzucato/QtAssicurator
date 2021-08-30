@@ -5,14 +5,15 @@
 #include <view/addscene.h>
 
 
-class addController : public controller
+class addController : public controller, public QObject
 {
-    Q_OBJECT
 private:
     Assicurati* model;
     addScene* view;
 public:
     addController();
+public slots:
+    void buildAss();
 };
 
 #endif // ADDCONTROLLER_H

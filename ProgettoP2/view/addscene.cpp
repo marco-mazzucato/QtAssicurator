@@ -1,6 +1,6 @@
 #include "addscene.h"
 
-addScene::addScene(): _nome(new QLineEdit()), _cognome(new QLineEdit()), _codf(new QLineEdit()), _eta(new QLineEdit()), _impVers(new QLineEdit()), _costoB(new QLineEdit()), _cil(new QLineEdit()), _cav(new QLineEdit()), _com(new QLineEdit()), _mq(new QLineEdit()), _fascia(new QComboBox()), _neo(new QCheckBox("Neopatentato")), _edi(new QCheckBox("Edificio")), fascia(new QLabel()), impVers(new QLabel()), costoB(new QLabel()), cil(new QLabel()), cav(new QLabel()), com(new QLabel()), mq(new QLabel()), _data(new QDateTimeEdit(QDate::currentDate()))
+addScene::addScene(): _nome(new QLineEdit()), _cognome(new QLineEdit()), _codf(new QLineEdit()), _eta(new QLineEdit()), _impVers(new QLineEdit()), _costoB(new QLineEdit()), _cil(new QLineEdit()), _cav(new QLineEdit()), _com(new QLineEdit()), _mq(new QLineEdit()), _fascia(new QComboBox()), _neo(new QCheckBox("Neopatentato")), _edi(new QCheckBox("Edificio")), fascia(new QLabel()), impVers(new QLabel()), costoB(new QLabel()), cil(new QLabel()), cav(new QLabel()), com(new QLabel()), mq(new QLabel()), _data(new QDateTimeEdit(QDate::currentDate())), lastPressed('n')
 {
     setSceneRect(0,0,1280,720);
     setBackgroundBrush(Qt::lightGray);
@@ -265,6 +265,10 @@ bool addScene::isEdi() const
 
 void addScene::showVita()
 {
+    if(lastPressed=='v')
+        lastPressed='n';
+    else
+        lastPressed='v';
     fascia->setVisible(!fascia->isVisible());
     _fascia->setVisible(!_fascia->isVisible());
     impVers->setVisible(!impVers->isVisible());
