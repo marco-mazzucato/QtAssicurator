@@ -1,6 +1,6 @@
 #include "contractcontroller.h"
 
-contractController::contractController()
+contractController::contractController(Assicurati *a):model(a), view(new contractScene())
 {
 
 }

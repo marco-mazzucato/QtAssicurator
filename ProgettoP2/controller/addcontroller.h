@@ -13,7 +13,7 @@ private:
     Assicurati* model;
     addScene* view;
 public:
-    addController();
+    addController(Assicurati*);
 public slots:
     void checkParams();
     void buildAss();
