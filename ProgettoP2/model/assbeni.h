@@ -7,7 +7,7 @@ class AssBeni: public Assicurazione
 private:
     double costoBene;
 public:
-    AssBeni(std::string, std::string, std::string, unsigned int, std::string, QDate, double);
+    AssBeni(std::string, std::string, std::string, unsigned int, int, QDate, double);
     AssBeni(const AssBeni&);
     ~AssBeni() = default;
 

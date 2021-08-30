@@ -16,9 +16,9 @@ private:
 
 public:
     Assicurati();
-
     Assicurazione& cercaPerNomeCognome(std::string, std::string);
     Assicurazione& cercaPerCodice(std::string);
+
 
 public slots:
 

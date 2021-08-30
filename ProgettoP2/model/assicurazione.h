@@ -7,10 +7,10 @@ class Assicurazione
 private:
     std::string nome, cognome, codFiscale;
     unsigned int eta;
-    std::string codPolizza;
+    int codPolizza;
     QDate inizioContratto;
 public:
-    Assicurazione(std::string, std::string, std::string, unsigned int, std::string, QDate);
+    Assicurazione(std::string, std::string, std::string, unsigned int, int, QDate);
     Assicurazione(const Assicurazione&);
     virtual ~Assicurazione() = default;
 
@@ -18,7 +18,7 @@ public:
     const std::string& getCognome() const;
     const std::string& getCodFiscale() const;
     const unsigned int& getEta() const;
-    const std::string& getCodPolizza() const;
+    const int& getCodPolizza() const;
     const QDate& getData() const;
 
     virtual Assicurazione* clone() const =0;

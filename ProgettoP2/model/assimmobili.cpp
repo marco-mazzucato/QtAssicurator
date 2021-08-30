@@ -1,6 +1,6 @@
 #include "assimmobili.h"
 
-AssImmobili::AssImmobili(std::string n, std::string c, std::string codf, unsigned int e, std::string codp, QDate d, double cb, std::string com, unsigned int _mq, bool ed): AssBeni(n, c, codf, e, codp, d, cb), comune(com), mq(_mq), edificio(ed) {}
+AssImmobili::AssImmobili(std::string n, std::string c, std::string codf, unsigned int e, int codp, QDate d, double cb, std::string com, unsigned int _mq, bool ed): AssBeni(n, c, codf, e, codp, d, cb), comune(com), mq(_mq), edificio(ed) {}
 
 AssImmobili::AssImmobili(const AssImmobili& a): AssBeni(a.getNome(), a.getCognome(), a.getCodFiscale(), a.getEta(), a.getCodPolizza(), a.getData(), a.getCosto()), comune(a.getComune()), mq(a.getMq()) {}
 

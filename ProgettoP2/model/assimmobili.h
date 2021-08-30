@@ -9,7 +9,7 @@ private:
     unsigned int mq;
     bool edificio; // true se edificio altrimenti terreno
 public:
-    AssImmobili(std::string, std::string, std::string, unsigned int, std::string, QDate, double, std::string, unsigned int, bool);
+    AssImmobili(std::string, std::string, std::string, unsigned int, int, QDate, double, std::string, unsigned int, bool);
     AssImmobili(const AssImmobili&);
     ~AssImmobili() = default;
 

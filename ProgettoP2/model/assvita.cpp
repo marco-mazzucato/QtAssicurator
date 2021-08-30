@@ -1,6 +1,6 @@
 #include "assvita.h"
 
-AssVita::AssVita(std::string n, std::string c, std::string codf, unsigned int e, std::string codp, QDate d, char f, double i): Assicurazione(n, c, codf, e, codp, d), fascia(f), importoVersato(i){}
+AssVita::AssVita(std::string n, std::string c, std::string codf, unsigned int e, int codp, QDate d, char f, double i): Assicurazione(n, c, codf, e, codp, d), fascia(f), importoVersato(i){}
 
 AssVita::AssVita(const AssVita& a): Assicurazione(a.getNome(), a.getCognome(), a.getCodFiscale(), a.getEta(), a.getCodPolizza(), a.getData()), fascia(a.getFascia()), importoVersato(a.getImporto()) {}
 

@@ -8,7 +8,7 @@ addController::addController(): model(new Assicurati()), view(new addScene())
 void addController::buildAss()
 {
     Assicurazione* a;
-    switch (view->getPressed()) {
+    switch (view->pressed()) {
     case 'n':
         break;
     case 'v':

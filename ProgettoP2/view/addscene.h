@@ -23,6 +23,7 @@ private:
     QCheckBox *_neo, *_edi;
     QLabel *fascia, *impVers, *costoB, *cil, *cav, *com, *mq;
     QDateTimeEdit *_data;
+    char lastPressed;
 public:
     addScene();
     std::string getNome() const;

@@ -8,7 +8,7 @@ private:
     char fascia; // A B C D dal piu facoltoso
     double importoVersato;
 public:
-    AssVita(std::string, std::string, std::string, unsigned int, std::string, QDate, char, double);
+    AssVita(std::string, std::string, std::string, unsigned int, int, QDate, char, double);
     AssVita(const AssVita&);
     ~AssVita() =default;
 

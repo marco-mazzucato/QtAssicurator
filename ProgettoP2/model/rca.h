@@ -9,7 +9,7 @@ private:
     unsigned int cavalli;
     bool neopatentato;
 public:
-    RCA(std::string, std::string, std::string, unsigned int, std::string, QDate, double, unsigned int, unsigned int, bool);
+    RCA(std::string, std::string, std::string, unsigned int, int, QDate, double, unsigned int, unsigned int, bool);
     RCA(const RCA&);
     ~RCA() = default;
 
