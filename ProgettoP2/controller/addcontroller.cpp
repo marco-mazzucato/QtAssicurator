@@ -2,7 +2,36 @@
 
 addController::addController(): model(new Assicurati()), view(new addScene())
 {
-    connect(view, &addScene::onAggPress, this, &addController::buildAss);
+    connect(view, &addScene::onAggPress, this, &addController::checkParams);
+}
+
+void addController::checkParams()
+{
+    bool check=true;
+    if(view->getNome()=="" || view->getCognome()=="" || view->getCodf()=="" || view->getCodf().length()!=16 ||
+            view->getEta()==0)
+        check=false;
+    switch (view->pressed()) {
+    case 'n':
+        check=false;
+        break;
+    case 'a':
+        if(view->getCav()==0 || view->getCil()==0 || view->getCosto()==0)
+            check=false;
+        break;
+    case 'v':
+        if(view->getImporto()==0)
+            check=false;
+        break;
+    case 'i':
+        if(view->getCosto()==0 || view->getComune()=="" || view->getMq()==0)
+            check=false;
+        break;
+    }
+    if(check)
+        buildAss();
+    //else
+        //view->showError();
 }
 
 void addController::buildAss()
@@ -24,4 +53,10 @@ void addController::buildAss()
         model->addAss(a);
         break;
     }
+    //view->showSuccess();
+}
+
+addScene *addController::getScene() const
+{
+    return view;
 }

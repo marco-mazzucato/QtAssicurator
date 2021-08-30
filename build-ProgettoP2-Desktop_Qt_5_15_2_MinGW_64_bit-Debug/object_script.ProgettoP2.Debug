@@ -14,6 +14,7 @@ debug/mainwindowview.o
 debug/rca.o
 debug/vector.o
 debug/viewscene.o
+debug/moc_addcontroller.o
 debug/moc_controller.o
 debug/moc_addscene.o
 debug/moc_assicurati.o

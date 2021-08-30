@@ -3,17 +3,21 @@
 #include "controller.h"
 #include <model/assicurati.h>
 #include <view/addscene.h>
+#include <QObject>
 
 
-class addController : public controller, public QObject
+class addController : public controller
 {
+    Q_OBJECT
 private:
     Assicurati* model;
     addScene* view;
 public:
     addController();
 public slots:
+    void checkParams();
     void buildAss();
+    addScene* getScene() const;
 };
 
 #endif // ADDCONTROLLER_H

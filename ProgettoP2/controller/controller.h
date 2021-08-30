@@ -1,10 +1,9 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
-#include <QObject>
 #include <QGraphicsScene>
 
 
-class controller
+class controller: public QObject
 {
     Q_OBJECT
 public:

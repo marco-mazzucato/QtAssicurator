@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), view(new mainwindowview()), c(new addController())
+    : QMainWindow(parent), view(new mainwindowview()), /*m(new Assicurati()), ac(new addController(m)), lc(new listcontroller(m)),*/ c(new addController)
 {
     setMinimumSize(QSize(1280,720));
     resize(QSize(1280,720));
