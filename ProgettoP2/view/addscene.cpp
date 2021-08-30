@@ -14,6 +14,10 @@ addScene::addScene(): vita(new QPushButton("Nuova assicurazione vita")), rca(new
     QRegExp eu("\\d{1,10}");
             QValidator* euVal = new QRegExpValidator(eu);
 
+    QPushButton* home = new QPushButton("Menu");
+    home->setGeometry(width()-200,height()-400, 200,200);
+    addWidget(home);
+
     vita->setGeometry(50,50,350,150);
     vita->setStyleSheet("font-size:25px;""background-color:grey;");
     addWidget(vita);
@@ -184,8 +188,9 @@ addScene::addScene(): vita(new QPushButton("Nuova assicurazione vita")), rca(new
     agg->setGeometry(width()-100,height()-100,100,50);
     agg->setStyleSheet("font-size:15px;""background-color:grey;");
     addWidget(agg);
-    connect(agg, &QPushButton::clicked, this, &addScene::onAggPress);
 
+    connect(agg, &QPushButton::clicked, this, &addScene::onAggPress);
+    connect(home, &QPushButton::clicked, this, &addScene::onHomePress);
     connect(vita, &QPushButton::clicked, this, &addScene::showVita);
     connect(rca, &QPushButton::clicked, this, &addScene::showRCA);
     connect(imm, &QPushButton::clicked, this, &addScene::showImm);

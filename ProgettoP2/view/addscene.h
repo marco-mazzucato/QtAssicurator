@@ -48,6 +48,7 @@ public:
 
 signals:
     void onAggPress();
+    void onHomePress();
 
 public slots:
     void showVita();
