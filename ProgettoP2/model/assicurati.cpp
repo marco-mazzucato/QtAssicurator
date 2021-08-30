@@ -1,6 +1,6 @@
 #include "assicurati.h"
 
-Assicurati::Assicurati(): currentAss(0), Ass() {
+Assicurati::Assicurati(): Ass() {
 
     Ass.push_back(new RCA("Marco", "Mazzucato", "MZZMRC99R04F382E", 21, 1, QDate(2020,10,4), 17000, 1200, 85, false));
     Ass.push_back(new AssImmobili("Luca", "Fantini", "FNTLCU80D14L781S", 45, 2, QDate(2020,8,21), 200000, "Monselice", 120, true));
@@ -16,13 +16,16 @@ int Assicurati::getNewId() const
     return maxid+1;
 }
 
+Vector<DeepPtr<Assicurazione>>::iterator Assicurati::getBegin()
+{
+    return Ass.begin();
+}
+
+Vector<DeepPtr<Assicurazione>>::iterator Assicurati::getEnd()
+{
+    return Ass.end();
+}
+
 void Assicurati::addAss(Assicurazione *a) {Ass.push_back(a);}
 
 void Assicurati::removeAss(int i) {Ass.erase(i);}
-
-//void addAss()
-
-/*void Assicurati::removeAss(std::string cod){
-
-}
-*/

@@ -11,19 +11,18 @@ class Assicurati: public QObject
 {
     Q_OBJECT
 private:
-    unsigned int currentAss;
     Vector<DeepPtr<Assicurazione>> Ass;
 
 public:
     Assicurati();
-    Assicurazione& cercaPerNomeCognome(std::string, std::string);
-    Assicurazione& cercaPerCodice(std::string);
     int getNewId() const;
+    Vector<DeepPtr<Assicurazione>>::iterator getBegin();
+    Vector<DeepPtr<Assicurazione>>::iterator getEnd();
 
 public slots:
 
     void addAss(Assicurazione*);
-    void removeAss(int);//bohhh
+    void removeAss(int);
 
 };
 
