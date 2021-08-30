@@ -53,7 +53,7 @@ void addController::buildAss()
         model->addAss(a);
         break;
     }
-    //view->showSuccess();
+    view->showSuccess();
 }
 
 addScene *addController::getScene() const

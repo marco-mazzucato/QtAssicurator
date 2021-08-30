@@ -11,11 +11,13 @@
 #include <qdatetimeedit.h>
 #include <qcombobox.h>
 #include <qcheckbox.h>
+#include <QTimer>
 
 class addScene : public QGraphicsScene
 {
     Q_OBJECT
 private:
+    QPushButton *vita, *rca, *imm;
     QLineEdit *_nome, *_cognome, *_codf, *_eta,
                     *_impVers, *_costoB, *_cil,
                     *_cav, *_com, *_mq;
@@ -41,6 +43,7 @@ public:
     unsigned int getMq() const;
     bool isEdi() const;
     char pressed() const;
+    void showSuccess();
 
 signals:
     void onAggPress();

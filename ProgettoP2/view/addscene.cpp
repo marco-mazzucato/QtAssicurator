@@ -1,7 +1,7 @@
 #include "addscene.h"
 #include <qdebug.h>
 
-addScene::addScene(): _nome(new QLineEdit()), _cognome(new QLineEdit()), _codf(new QLineEdit()), _eta(new QLineEdit()), _impVers(new QLineEdit()), _costoB(new QLineEdit()), _cil(new QLineEdit()), _cav(new QLineEdit()), _com(new QLineEdit()), _mq(new QLineEdit()), _fascia(new QComboBox()), _neo(new QCheckBox("Neopatentato")), _edi(new QCheckBox("Edificio")), fascia(new QLabel()), impVers(new QLabel()), costoB(new QLabel()), cil(new QLabel()), cav(new QLabel()), com(new QLabel()), mq(new QLabel()), _data(new QDateTimeEdit(QDate::currentDate())), lastPressed('n')
+addScene::addScene(): vita(new QPushButton("Nuova assicurazione vita")), rca(new QPushButton("Nuova assicurazione RCA")), imm(new QPushButton("Nuova assicurazione immobili")), _nome(new QLineEdit()), _cognome(new QLineEdit()), _codf(new QLineEdit()), _eta(new QLineEdit()), _impVers(new QLineEdit()), _costoB(new QLineEdit()), _cil(new QLineEdit()), _cav(new QLineEdit()), _com(new QLineEdit()), _mq(new QLineEdit()), _fascia(new QComboBox()), _neo(new QCheckBox("Neopatentato")), _edi(new QCheckBox("Edificio")), fascia(new QLabel()), impVers(new QLabel()), costoB(new QLabel()), cil(new QLabel()), cav(new QLabel()), com(new QLabel()), mq(new QLabel()), _data(new QDateTimeEdit(QDate::currentDate())), lastPressed('n')
 {
     setSceneRect(0,0,1280,720);
     setBackgroundBrush(Qt::lightGray);
@@ -14,17 +14,14 @@ addScene::addScene(): _nome(new QLineEdit()), _cognome(new QLineEdit()), _codf(n
     QRegExp eu("\\d{1,10}");
             QValidator* euVal = new QRegExpValidator(eu);
 
-    QPushButton* vita = new QPushButton("Nuova assicurazione vita");
     vita->setGeometry(50,50,350,150);
     vita->setStyleSheet("font-size:25px;""background-color:grey;");
     addWidget(vita);
 
-    QPushButton* rca = new QPushButton("Nuova assicurazione RCA");
     rca->setGeometry(450,50,350,150);
     rca->setStyleSheet("font-size:25px;""background-color:grey;");
     addWidget(rca);
 
-    QPushButton* imm = new QPushButton("Nuova assicurazione immobili");
     imm->setGeometry(850,50,350,150);
     imm->setStyleSheet("font-size:25px;""background-color:grey;");
     addWidget(imm);
@@ -267,6 +264,24 @@ bool addScene::isEdi() const
 char addScene::pressed() const
 {
     return lastPressed;
+}
+
+void addScene::showSuccess()
+{
+    QTimer* t = new QTimer();
+    t->setSingleShot(true);
+    QLabel* msg = new QLabel("Assicurazione inserita con successo!");
+    msg->setGeometry(width()/2-200, height()/2-75, 400, 150);
+    msg->setStyleSheet("border: solid 3px; "
+                       "font-size: 23px;"
+                       "padding: 10px;"
+                       " border-radius: 15px; "
+                       "background: rgba(255,255,255,0.1); "
+                       "color:green;");
+    addWidget(msg);
+
+    t->start(5000);
+    connect(t, &QTimer::timeout, msg, [=](){delete msg;});
 }
 
 void addScene::showVita()
