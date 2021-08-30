@@ -18,7 +18,7 @@ public:
     Assicurati();
     Assicurazione& cercaPerNomeCognome(std::string, std::string);
     Assicurazione& cercaPerCodice(std::string);
-
+    int getNewId() const;
 
 public slots:
 

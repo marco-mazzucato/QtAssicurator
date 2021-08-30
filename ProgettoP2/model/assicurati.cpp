@@ -7,6 +7,15 @@ Assicurati::Assicurati(): currentAss(0), Ass() {
     Ass.push_back(new AssVita("Giada", "Dante", "gdddnt9904", 32, 455887, QDate(2019,1,15), 'C', 250000));
 }
 
+int Assicurati::getNewId() const
+{
+    int maxid=0;
+    for(auto cit=Ass.begin();cit!=Ass.end();cit++)
+        if((*cit)->getCodPolizza()>maxid)
+            maxid=(*cit)->getCodPolizza();
+    return maxid+1;
+}
+
 //void addAss()
 
 /*void Assicurati::removeAss(std::string cod){
