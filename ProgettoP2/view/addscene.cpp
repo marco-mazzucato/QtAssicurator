@@ -263,6 +263,10 @@ bool addScene::isEdi() const
     return _edi->text().toLocal8Bit().constData();
 }
 
+char addScene::pressed() const{
+    return lastPressed;
+}
+
 void addScene::showVita()
 {
     if(lastPressed=='v')
@@ -289,6 +293,10 @@ void addScene::showVita()
 }
 
 void addScene::showRCA(){
+    if(lastPressed=='a')
+        lastPressed='n';
+    else
+        lastPressed='a';
     costoB->setVisible(true);
     _costoB->setVisible(true);
     cil->setVisible(!cil->isVisible());
@@ -308,6 +316,10 @@ void addScene::showRCA(){
 }
 
 void addScene::showImm(){
+    if(lastPressed=='i')
+        lastPressed='n';
+    else
+        lastPressed='i';
     costoB->setVisible(true);
     _costoB->setVisible(true);
     com->setVisible(!com->isVisible());

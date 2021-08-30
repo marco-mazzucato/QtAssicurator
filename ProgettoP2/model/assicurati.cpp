@@ -2,9 +2,9 @@
 
 Assicurati::Assicurati(): currentAss(0), Ass() {
 
-    Ass.push_back(new RCA("Marco", "Mazzucato", "mzzmrc9904", 21, 552255, QDate(2020,10,4), 17000, 1200, 85, false));
-    Ass.push_back(new AssImmobili("Luca", "Fantini", "lcfant9904", 45, 856965, QDate(2020,8,21), 200000, "Monselice", 120, true));
-    Ass.push_back(new AssVita("Giada", "Dante", "gdddnt9904", 32, 455887, QDate(2019,1,15), 'C', 250000));
+    Ass.push_back(new RCA("Marco", "Mazzucato", "MZZMRC99R04F382E", 21, 1, QDate(2020,10,4), 17000, 1200, 85, false));
+    Ass.push_back(new AssImmobili("Luca", "Fantini", "FNTLCU80D14L781S", 45, 2, QDate(2020,8,21), 200000, "Monselice", 120, true));
+    Ass.push_back(new AssVita("Giada", "Dante", "gdddnt9904", 32, 3, QDate(2019,1,15), 'C', 250000));
 }
 
 int Assicurati::getNewId() const
@@ -16,7 +16,11 @@ int Assicurati::getNewId() const
     return maxid+1;
 }
 
-//void addAss()
+void Assicurati::addAss(Assicurazione * a)
+{
+    Ass.push_back(a);
+}
+
 
 /*void Assicurati::removeAss(std::string cod){
 

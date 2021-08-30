@@ -40,6 +40,7 @@ public:
     std::string getComune() const;
     unsigned int getMq() const;
     bool isEdi() const;
+    char pressed() const;
 
 signals:
     void onAggPress();

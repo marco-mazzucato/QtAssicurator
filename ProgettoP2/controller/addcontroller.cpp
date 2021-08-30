@@ -12,13 +12,16 @@ void addController::buildAss()
     case 'n':
         break;
     case 'v':
-        if()
-        a = new AssVita(view->getNome(), view->getCognome());
+        a = new AssVita( view->getNome(), view->getCognome(), view->getCodf(), view->getEta(), model->getNewId(), view->getData(), view->getFascia(), view->getImporto());
+        model->addAss(a);
         break;
     case 'i':
+        a = new AssImmobili( view->getNome(), view->getCognome(), view->getCodf(), view->getEta(), model->getNewId(), view->getData(), view->getCosto(), view->getComune(), view->getMq(), view->isEdi());
+        model->addAss(a);
         break;
     case 'a':
+        a = new RCA( view->getNome(), view->getCognome(), view->getCodf(), view->getEta(), model->getNewId(), view->getData(), view->getCosto(), view->getCil(), view->getCav(), view->isNeo());
+        model->addAss(a);
         break;
     }
-    model->addAss(a);
 }
