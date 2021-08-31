@@ -17,6 +17,8 @@ public:
     contractScene* getScene() const;
 public slots:
     void deleteMember();
+    void nextMember();
+    void previousMember();
 };
 
 #endif // CONTRACTCONTROLLER_H

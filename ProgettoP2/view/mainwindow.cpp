@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include <qdebug.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), view(new mainwindowview()), m(new Assicurati()), ac(new addController(m)), cc(new contractController(m)), mc(new mainController()), c(mc)
@@ -19,7 +18,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::updateScene(char ch)
 {
-    qDebug()<<"HERE";
     switch(ch){
         case 'm':
             c=mc;

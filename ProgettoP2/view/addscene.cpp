@@ -14,11 +14,6 @@ addScene::addScene(): vita(new QPushButton("Nuova assicurazione vita")), rca(new
     QRegExp eu("\\d{1,10}");
             QValidator* euVal = new QRegExpValidator(eu);
 
-    QPushButton* home = new QPushButton("Menu");
-    home->setGeometry(width()-200,height()-400, 200,200);
-    addWidget(home);
-    connect(home, &QPushButton::clicked, this, &addScene::onHomePress);
-
     vita->setGeometry(50,50,350,150);
     vita->setStyleSheet("font-size:25px;""background-color:grey;");
     addWidget(vita);
@@ -190,10 +185,16 @@ addScene::addScene(): vita(new QPushButton("Nuova assicurazione vita")), rca(new
     agg->setStyleSheet("font-size:15px;""background-color:grey;");
     addWidget(agg);
 
+    QPushButton* home = new QPushButton("Home");
+    home->setGeometry(1000,570,200,100);
+    home->setStyleSheet("font-size:25px;""background-color:grey;");
+    addWidget(home);
+
     connect(agg, &QPushButton::clicked, this, &addScene::onAggPress);
     connect(vita, &QPushButton::clicked, this, &addScene::showVita);
     connect(rca, &QPushButton::clicked, this, &addScene::showRCA);
     connect(imm, &QPushButton::clicked, this, &addScene::showImm);
+    connect(home, &QPushButton::clicked, this, &addScene::onHomePress);
 }
 
 std::string addScene::getNome() const
@@ -253,7 +254,7 @@ bool addScene::isNeo() const
 
 std::string addScene::getComune() const
 {
-    return _com->text().toLocal8Bit().constData();
+    return _com->text().toLocal8Bit().constData();//controllare
 }
 
 unsigned int addScene::getMq() const

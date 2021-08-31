@@ -2,30 +2,36 @@
 
 contractController::contractController(Assicurati *a):model(a), view(new contractScene()), it(model->getBegin()) {
     view->loadUser(it);
-    connect(view, frecciaavanti, this, prossimo);
+    connect(view, &contractScene::onNextPress, this, &contractController::nextMember);
+    connect(view, &contractScene::onPreviousPress, this, &contractController::previousMember);
+    connect(view, &contractScene::onDeletePress, this, &contractController::deleteMember);
+    connect(view, &contractScene::onHomePress, this, [=](){emit changeScene('m');});
 }
 
-prossimo(){
+void contractController::deleteMember()
+{
+    int codDaEliminare = (*it)->getCodPolizza();
     ++it;
-    loadUser(it);
+    view->loadUser(it);
+    int n=0;
+    for(auto it=model->getBegin(); it!=model->getEnd() && (*it)->getCodPolizza()!=codDaEliminare; it++)
+        n++;
+    model->removeAss(n);
 }
 
-elimina(){
-    idDaElminare = it->getID;
-    ++it();
-    loaduser(it);
-    int n=0;
-    for(auto it=model->getBegin; it!=model->getEnd() && it->getId!=idDaEliminare; it++)
-        n++;
-    model->removeAss(n); //elimina elemento chiama erase(i) su Ass
+void contractController::nextMember()
+{
+    ++it;
+    view->loadUser(it);
+}
+
+void contractController::previousMember()
+{
+    --it;
+    view->loadUser(it);
 }
 
 contractScene *contractController::getScene() const
 {
     return view;
-}
-
-void contractController::deleteMember()
-{
-
 }
