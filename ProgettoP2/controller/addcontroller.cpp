@@ -57,7 +57,4 @@ void addController::buildAss()
     view->showSuccess();
 }
 
-addScene *addController::getScene() const
-{
-    return view;
-}
+addScene *addController::getScene() const{return view;}

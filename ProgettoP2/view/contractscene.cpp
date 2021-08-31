@@ -6,12 +6,12 @@ contractScene::contractScene()
     setBackgroundBrush(Qt::lightGray);
 
     QPushButton* avanti = new QPushButton("Avanti");
-    avanti->setGeometry(1000,550, 200,90);
+    avanti->setGeometry(1000,570, 200,90);
     avanti->setStyleSheet("font-size:25px;""background-color:grey;");
     addWidget(avanti);
 
     QPushButton* indietro = new QPushButton("Indietro");
-    indietro->setGeometry(790,550, 200,90);
+    indietro->setGeometry(790,570, 200,90);
     indietro->setStyleSheet("font-size:25px;""background-color:grey;");
     addWidget(indietro);
 
@@ -34,24 +34,32 @@ contractScene::contractScene()
 
 void contractScene::loadUser(Vector<DeepPtr<Assicurazione>>::iterator it)//lettura dati da iteratore di Ass
 {
-    QLabel *lnome= new QLabel("Nome assicurato:");
-    lnome->setGeometry(100,100,100,30);
+    QFont* s=new QFont();
+    s->setPointSize(20);
+    QFont* t=new QFont();
+    t->setPointSize(15);
+
+    QGraphicsTextItem *title1 = addText("Dati assicurato");
+    title1->setPos(50,30);
+    title1->setFont(*s);
+    addItem(title1);
+
+    QLabel *lnome= new QLabel("Nome:");
+    lnome->setGeometry(50,100,100,30);
     lnome->setStyleSheet("font-size: 15px;"
                          "background-color:rgba(255,255,255,0)");
     addWidget(lnome);
 
     QGraphicsTextItem *nome = addText(QString::fromStdString((*it)->getNome()));
-    lnome->setGeometry(100,100,100,30);
-    lnome->setStyleSheet("font-size: 15px;"
-                         "background-color:rgba(255,255,255,0)");
+    nome->setPos(170,100);
     addItem(nome);
 
     QGraphicsTextItem *cognome = addText(QString::fromStdString((*it)->getCognome()));
-    cognome->setPos(50,50);
+    cognome->setPos(200,100);
     addItem(cognome);
 
     QGraphicsTextItem *eta = addText(QString::number((*it)->getEta()));
-    eta->setPos(100,100);
+    eta->setPos(280,100);
     addItem(eta);
 
     connect(this, &contractScene::onNextPress, lnome, [=](){delete lnome;});// tutto qua i widget

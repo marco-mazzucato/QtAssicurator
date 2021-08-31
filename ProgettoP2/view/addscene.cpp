@@ -180,8 +180,8 @@ addScene::addScene(): vita(new QPushButton("Nuova assicurazione vita")), rca(new
     addWidget(_edi);
     _edi->setVisible(false);
 
-    QPushButton* agg = new QPushButton("Aggiungi");
-    agg->setGeometry(width()-100,height()-100,100,50);
+    QPushButton* agg = new QPushButton("Aggiungi assicurazione");
+    agg->setGeometry(900,360,300,150);
     agg->setStyleSheet("font-size:15px;""background-color:grey;");
     addWidget(agg);
 
@@ -276,7 +276,7 @@ void addScene::showError()
 {
     QTimer* t=new QTimer();
     t->setSingleShot(true);
-    QLabel* msg=new QLabel("Assicurazione non aggiunta,\nseleziona un tipo di assicurazione\ne compila tutti i campi");
+    QLabel* msg=new QLabel("Assicurazione non aggiunta,\nseleziona un tipo di assicurazione\ne compila tutti i campi correttamente");
     msg->setGeometry(width()/2-200,height()/2-75,400,150);
     msg->setStyleSheet("border: solid 3px black;"
                        "padding: 10px;"
