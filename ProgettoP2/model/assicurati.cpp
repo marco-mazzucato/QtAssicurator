@@ -26,6 +26,10 @@ Vector<DeepPtr<Assicurazione>>::iterator Assicurati::getEnd()
     return Ass.end();
 }
 
+int Assicurati::getSize() const{
+    return Ass.size();
+}
+
 void Assicurati::addAss(Assicurazione *a) {Ass.push_back(a);}
 
 void Assicurati::removeAss(int i) {Ass.erase(i);}

@@ -18,6 +18,7 @@ public:
     int getNewId() const;
     Vector<DeepPtr<Assicurazione>>::iterator getBegin();
     Vector<DeepPtr<Assicurazione>>::iterator getEnd();
+    int getSize() const;
 
 public slots:
 

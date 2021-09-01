@@ -66,11 +66,16 @@ void contractScene::loadUser(Vector<DeepPtr<Assicurazione>>::iterator it, int c,
     eta->setFont(*t);
     addItem(eta);
 
+    QGraphicsTextItem *indice = addText(QString::number(c)+"/"+QString::number(max));
+    indice->setPos(900,100);
+    indice->setFont(*t);
+    addItem(indice);
 
-    connect(this, &contractScene::onNextPress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(nome);});//da sistemare
-    connect(this, &contractScene::onPreviousPress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(nome);});
-    connect(this, &contractScene::onDeletePress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(nome);});
-    connect(this, &contractScene::onHomePress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(nome);});
+
+    connect(this, &contractScene::onNextPress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(indice);});//da sistemare
+    connect(this, &contractScene::onPreviousPress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(indice);});
+    connect(this, &contractScene::onDeletePress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(indice);});
+    connect(this, &contractScene::onHomePress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(indice);});
     //Uso i cast per vedere il tipo dinamico e imposto i campi opzionali come prima
 }
 
