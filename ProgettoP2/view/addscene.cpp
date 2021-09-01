@@ -195,6 +195,7 @@ addScene::addScene(): vita(new QPushButton("Nuova assicurazione vita")), rca(new
     connect(rca, &QPushButton::clicked, this, &addScene::showRCA);
     connect(imm, &QPushButton::clicked, this, &addScene::showImm);
     connect(home, &QPushButton::clicked, this, &addScene::onHomePress);
+    connect(home, &QPushButton::clicked, this, &addScene::resetField);
 }
 
 std::string addScene::getNome() const
@@ -395,4 +396,30 @@ void addScene::showImm(){
     cav->setVisible(false);
     _cav->setVisible(false);
     _neo->setVisible(false);
+}
+
+void addScene::resetField()
+{
+    switch(lastPressed){
+        case 'v': showVita();
+        break;
+    case 'a': showRCA();
+        break;
+    case 'i': showImm();
+        break;
+    }
+    _nome->setText("");
+    _cognome->setText("");
+    _codf->setText("");
+    _eta->setText("");
+    _data->setDate(QDate::currentDate());
+    _impVers->setText("");
+    _fascia->setCurrentText("A");
+    _costoB->setText("");
+    _cil->setText("");
+    _cav->setText("");
+    _neo->setChecked(false);
+    _com->setText("");
+    _mq->setText("");
+    _edi->setChecked(false);
 }

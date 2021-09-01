@@ -55,6 +55,7 @@ void addController::buildAss()
         break;
     }
     view->showSuccess();
+    view->resetField();
 }
 
 addScene *addController::getScene() const{return view;}

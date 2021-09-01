@@ -12,6 +12,7 @@ private:
     Assicurati* model;
     contractScene* view;
     Vector<DeepPtr<Assicurazione>>::iterator it;
+    int count;
 public:
     contractController(Assicurati*);
     contractScene* getScene() const;

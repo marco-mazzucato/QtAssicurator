@@ -21,7 +21,7 @@ contractScene::contractScene()
     addWidget(elimina);
 
     QPushButton* home = new QPushButton("Home");
-    home->setGeometry(50,570,200,100);
+    home->setGeometry(30,570,200,100);
     home->setStyleSheet("font-size:25px;""background-color:grey;");
     addWidget(home);
 
@@ -32,39 +32,45 @@ contractScene::contractScene()
 
 }
 
-void contractScene::loadUser(Vector<DeepPtr<Assicurazione>>::iterator it)//lettura dati da iteratore di Ass
+void contractScene::loadUser(Vector<DeepPtr<Assicurazione>>::iterator it, int c, int max)
 {
     QFont* s=new QFont();
     s->setPointSize(20);
     QFont* t=new QFont();
     t->setPointSize(15);
+    QFont* l=new QFont();
+    l->setPointSize(12);
 
     QGraphicsTextItem *title1 = addText("Dati assicurato");
-    title1->setPos(50,30);
+    title1->setPos(30,30);
     title1->setFont(*s);
     addItem(title1);
 
-    QLabel *lnome= new QLabel("Nome:");
-    lnome->setGeometry(50,100,100,30);
-    lnome->setStyleSheet("font-size: 15px;"
-                         "background-color:rgba(255,255,255,0)");
-    addWidget(lnome);
+    QGraphicsTextItem *title2 = addText("Codice polizza");
+    title2->setPos(500,30);
+    title2->setFont(*s);
+    addItem(title2);
 
-    QGraphicsTextItem *nome = addText(QString::fromStdString((*it)->getNome()));
+    QGraphicsTextItem *lnome= new QGraphicsTextItem("Nome:");
+    lnome->setPos(30,100);
+    lnome->setFont(*l);
+    addItem(lnome);
+
+    QGraphicsTextItem *nome = addText(QString::fromStdString((*it)->getNome())+" "+QString::fromStdString((*it)->getCognome()));
     nome->setPos(170,100);
+    nome->setFont(*t);
     addItem(nome);
 
-    QGraphicsTextItem *cognome = addText(QString::fromStdString((*it)->getCognome()));
-    cognome->setPos(200,100);
-    addItem(cognome);
-
     QGraphicsTextItem *eta = addText(QString::number((*it)->getEta()));
-    eta->setPos(280,100);
+    eta->setPos(400,100);
+    eta->setFont(*t);
     addItem(eta);
 
-    connect(this, &contractScene::onNextPress, lnome, [=](){delete lnome;});// tutto qua i widget
-    connect(this, &contractScene::onNextPress, this, [=](){removeItem(nome);removeItem(nome);removeItem(nome);removeItem(nome);removeItem(nome);});//da sistemare
 
+    connect(this, &contractScene::onNextPress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(nome);});//da sistemare
+    connect(this, &contractScene::onPreviousPress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(nome);});
+    connect(this, &contractScene::onDeletePress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(nome);});
+    connect(this, &contractScene::onHomePress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(nome);});
     //Uso i cast per vedere il tipo dinamico e imposto i campi opzionali come prima
 }
 

@@ -1,11 +1,11 @@
 #include "contractcontroller.h"
 
-contractController::contractController(Assicurati *a):model(a), view(new contractScene()), it(model->getBegin()) {
+contractController::contractController(Assicurati *a):model(a), view(new contractScene()), it(model->getBegin()), count(1) {
     view->loadUser(it);
     connect(view, &contractScene::onNextPress, this, &contractController::nextMember);
     connect(view, &contractScene::onPreviousPress, this, &contractController::previousMember);
     connect(view, &contractScene::onDeletePress, this, &contractController::deleteMember);
-    connect(view, &contractScene::onHomePress, this, [=](){emit changeScene('m');});
+    connect(view, &contractScene::onHomePress, this, [=](){emit changeScene('m'); it=model->getBegin(); view->loadUser(it); count=1;});
 }
 
 void contractController::deleteMember()
@@ -22,12 +22,20 @@ void contractController::deleteMember()
 void contractController::nextMember()
 {
     ++it;
+    ++count;
+    if(it==model->getEnd()){
+        --it;
+        --count;
+    }
     view->loadUser(it);
 }
 
 void contractController::previousMember()
 {
-    --it;
+    if(it!=model->getBegin()){
+        --it;
+        --count;
+    }
     view->loadUser(it);
 }
 

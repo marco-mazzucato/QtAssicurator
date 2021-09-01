@@ -12,7 +12,7 @@ class contractScene : public QGraphicsScene
     Q_OBJECT
 public:
     contractScene();
-    void loadUser(Vector<DeepPtr<Assicurazione>>::iterator);
+    void loadUser(Vector<DeepPtr<Assicurazione>>::iterator,int,int);
 signals:
     void onNextPress();
     void onPreviousPress();

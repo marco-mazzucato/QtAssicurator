@@ -54,6 +54,7 @@ public slots:
     void showVita();
     void showRCA();
     void showImm();
+    void resetField();
 };
 
 #endif // ADDSCENE_H
