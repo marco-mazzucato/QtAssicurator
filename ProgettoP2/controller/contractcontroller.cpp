@@ -1,4 +1,5 @@
 #include "contractcontroller.h"
+#include <QDebug>
 
 contractController::contractController(Assicurati *a):model(a), view(new contractScene()), it(model->getBegin()), count(1) {
     view->loadUser(it, count, model->getSize());
@@ -10,24 +11,56 @@ contractController::contractController(Assicurati *a):model(a), view(new contrac
 
 void contractController::deleteMember()
 {
-    int codDaEliminare = (*it)->getCodPolizza();
-    ++it;
-    view->loadUser(it, count, model->getSize());
-    int n=0;
-    for(auto it=model->getBegin(); it!=model->getEnd() && (*it)->getCodPolizza()!=codDaEliminare; it++)
-        n++;
-    model->removeAss(n);
+    int max(model->getSize());
+    if(max){
+        if(max-count){ //max-count>0
+            int elimina = (*it)->getCodPolizza();
+            ++it;
+            int riprendi = (*it)->getCodPolizza();
+            int i=0;
+            for(auto dit=model->getBegin(); (*dit)->getCodPolizza()!=elimina;++dit)
+                i++;
+            model->removeAss(i);
+            it=model->getBegin();
+            while((*it)->getCodPolizza()!=riprendi)
+                ++it;
+            view->loadUser(it,count,model->getSize());
+        }
+        else{ //max-count=0
+            int elimina = (*it)->getCodPolizza();
+            if(max!=1)
+            {
+                --it;
+                int riprendi = (*it)->getCodPolizza();
+                int i=0;
+                for(auto dit=model->getBegin(); (*dit)->getCodPolizza()!=elimina;++dit)
+                    i++;
+                model->removeAss(i);
+                it=model->getBegin();
+                while ((*it)->getCodPolizza()!=riprendi)
+                    ++it;
+                view->loadUser(it, count, model->getSize());
+            }
+            else{
+                model->removeAss(0);
+                view->loadEmptyUser();
+            }
+        }
+    }
 }
 
 void contractController::nextMember()
 {
-    ++it;
-    ++count;
-    if(it==model->getEnd()){
-        --it;
-        --count;
+    if(model->getSize())
+    {
+        ++it;
+        ++count;
+        if(it==model->getEnd()){
+            --it;
+            --count;
+        }
+        view->loadUser(it, count, model->getSize());
     }
-    view->loadUser(it, count, model->getSize());
 }
 
 void contractController::previousMember()
@@ -36,7 +69,8 @@ void contractController::previousMember()
         --it;
         --count;
     }
-    view->loadUser(it, count, model->getSize());
+    if(model->getSize())
+        view->loadUser(it, count, model->getSize());
 }
 
 contractScene *contractController::getScene() const

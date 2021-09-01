@@ -79,6 +79,17 @@ void contractScene::loadUser(Vector<DeepPtr<Assicurazione>>::iterator it, int c,
     //Uso i cast per vedere il tipo dinamico e imposto i campi opzionali come prima
 }
 
+void contractScene::loadEmptyUser()
+{
+    QFont* t=new QFont();
+    t->setPointSize(15);
+
+    QGraphicsTextItem *indice = addText("Non ci sono utenti salvati nel database");
+    indice->setPos(400,400);
+    indice->setFont(*t);
+    addItem(indice);
+}
+
 
 
 
