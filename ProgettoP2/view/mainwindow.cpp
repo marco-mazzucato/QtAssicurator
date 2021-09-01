@@ -26,6 +26,7 @@ void MainWindow::updateScene(char ch)
             c=ac;
         break;
         case 'v':
+            cc->updateModel();
             c=cc;
         break;
     }

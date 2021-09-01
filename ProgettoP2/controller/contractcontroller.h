@@ -20,6 +20,7 @@ public slots:
     void deleteMember();
     void nextMember();
     void previousMember();
+    void updateModel();
 };
 
 #endif // CONTRACTCONTROLLER_H

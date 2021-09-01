@@ -1,9 +1,6 @@
 #include "mainwindowview.h"
 
-mainwindowview::mainwindowview()
-{
-
-}
+mainwindowview::mainwindowview() {}
 
 void mainwindowview::resizeEvent(QResizeEvent* event){
     QGraphicsView::resizeEvent(event);

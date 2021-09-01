@@ -61,21 +61,33 @@ void contractScene::loadUser(Vector<DeepPtr<Assicurazione>>::iterator it, int c,
     nome->setFont(*t);
     addItem(nome);
 
+    QGraphicsTextItem *lcodf = addText("Codice fiscale:");
+    lcodf->setPos(30,120);
+    lcodf->setFont(*t);
+    addItem(lcodf);
+
+    QGraphicsTextItem *codf = addText(QString::fromStdString((*it)->getCodFiscale()));
+    codf->setPos(400,100);
+    codf->setFont(*t);
+    addItem(codf);
+
     QGraphicsTextItem *eta = addText(QString::number((*it)->getEta()));
     eta->setPos(400,100);
     eta->setFont(*t);
     addItem(eta);
+
+
 
     QGraphicsTextItem *indice = addText(QString::number(c)+"/"+QString::number(max));
     indice->setPos(900,100);
     indice->setFont(*t);
     addItem(indice);
 
+    connect(this, &contractScene::onNextPress, this, [=](){removeItem(title1);removeItem(title2);removeItem(lnome);removeItem(nome);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(indice);});//da sistemare
+    connect(this, &contractScene::onPreviousPress, this, [=](){removeItem(title1);removeItem(title2);removeItem(lnome);removeItem(nome);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(indice);});
+    connect(this, &contractScene::onDeletePress, this, [=](){removeItem(title1);removeItem(title2);removeItem(lnome);removeItem(nome);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(indice);});
+    connect(this, &contractScene::onHomePress, this, [=](){removeItem(title1);removeItem(title2);removeItem(lnome);removeItem(nome);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(indice);});
 
-    connect(this, &contractScene::onNextPress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(indice);});//da sistemare
-    connect(this, &contractScene::onPreviousPress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(indice);});
-    connect(this, &contractScene::onDeletePress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(indice);});
-    connect(this, &contractScene::onHomePress, this, [=](){removeItem(nome);removeItem(eta);removeItem(nome);removeItem(indice);});
     //Uso i cast per vedere il tipo dinamico e imposto i campi opzionali come prima
 }
 

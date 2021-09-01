@@ -182,7 +182,7 @@ addScene::addScene(): vita(new QPushButton("Nuova assicurazione vita")), rca(new
 
     QPushButton* agg = new QPushButton("Aggiungi assicurazione");
     agg->setGeometry(900,360,300,150);
-    agg->setStyleSheet("font-size:15px;""background-color:grey;");
+    agg->setStyleSheet("font-size:25px;""background-color:grey;");
     addWidget(agg);
 
     QPushButton* home = new QPushButton("Home");
