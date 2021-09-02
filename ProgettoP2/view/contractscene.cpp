@@ -46,58 +46,119 @@ void contractScene::loadUser(Vector<DeepPtr<Assicurazione>>::iterator it, int c,
     title1->setFont(*s);
     addItem(title1);
 
-    QGraphicsTextItem *title2 = addText("Codice polizza");
+    QGraphicsTextItem *title2 = addText("Codice polizza:");
     title2->setPos(500,30);
     title2->setFont(*s);
     addItem(title2);
 
+    QGraphicsTextItem *codp = addText(QString::number((*it)->getCodPolizza()));
+    codp->setPos(685,30);
+    codp->setFont(*s);
+    addItem(codp);
+
     QGraphicsTextItem *lnome= new QGraphicsTextItem("Nome:");
-    lnome->setPos(30,100);
+    lnome->setPos(30,85);
     lnome->setFont(*l);
     addItem(lnome);
 
     QGraphicsTextItem *nome = addText(QString::fromStdString((*it)->getNome())+" "+QString::fromStdString((*it)->getCognome()));
-    nome->setPos(170,100);
+    nome->setPos(170,80);
     nome->setFont(*t);
     addItem(nome);
 
     QGraphicsTextItem *lcodf = addText("Codice fiscale:");
-    lcodf->setPos(30,120);
-    lcodf->setFont(*t);
+    lcodf->setPos(30,125);
+    lcodf->setFont(*l);
     addItem(lcodf);
 
     QGraphicsTextItem *codf = addText(QString::fromStdString((*it)->getCodFiscale()));
-    codf->setPos(400,100);
+    codf->setPos(170,120);
     codf->setFont(*t);
     addItem(codf);
 
+    QGraphicsTextItem *leta = addText("Anni:");
+    leta->setPos(30,165);
+    leta->setFont(*l);
+    addItem(leta);
+
     QGraphicsTextItem *eta = addText(QString::number((*it)->getEta()));
-    eta->setPos(400,100);
+    eta->setPos(170,160);
     eta->setFont(*t);
     addItem(eta);
 
+    QGraphicsTextItem *ldata = addText("Inizio contratto:");
+    ldata->setPos(30,205);
+    ldata->setFont(*l);
+    addItem(ldata);
 
+    QGraphicsTextItem *data = addText((*it)->getData().toString());
+    data->setPos(170,200);
+    data->setFont(*t);
+    addItem(data);
+
+    QGraphicsTextItem *title3 = addText("Informazioni assicurazione");
+    title3->setPos(30,265);
+    title3->setFont(*s);
+    addItem(title3);
+
+    QGraphicsTextItem *lpremio = addText("Premio da pagare:");
+    lpremio->setPos(30,320);
+    lpremio->setFont(*l);
+    addItem(lpremio);
+
+    QGraphicsTextItem *premio = addText(QString::number((*it)->calcolaPremio())+" €");
+    premio->setPos(170,315);
+    premio->setFont(*t);
+    addItem(premio);
+
+    QGraphicsTextItem *lmassimale = addText("Massimale pagato");
+    lmassimale->setPos(30,360);
+    lmassimale->setFont(*l);
+    addItem(lmassimale);
+
+    QGraphicsTextItem *massimale = addText(QString::number((*it)->calcolaMassimale())+" €");
+    massimale->setPos(170,355);
+    massimale->setFont(*t);
+    addItem(massimale);
 
     QGraphicsTextItem *indice = addText(QString::number(c)+"/"+QString::number(max));
-    indice->setPos(900,100);
+    indice->setPos(1100,30);
     indice->setFont(*t);
     addItem(indice);
 
-    connect(this, &contractScene::onNextPress, this, [=](){removeItem(title1);removeItem(title2);removeItem(lnome);removeItem(nome);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(indice);});//da sistemare
-    connect(this, &contractScene::onPreviousPress, this, [=](){removeItem(title1);removeItem(title2);removeItem(lnome);removeItem(nome);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(indice);});
-    connect(this, &contractScene::onDeletePress, this, [=](){removeItem(title1);removeItem(title2);removeItem(lnome);removeItem(nome);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(indice);});
-    connect(this, &contractScene::onHomePress, this, [=](){removeItem(title1);removeItem(title2);removeItem(lnome);removeItem(nome);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(indice);});
 
-    //Uso i cast per vedere il tipo dinamico e imposto i campi opzionali come prima
+
+
+
+   /* AssVita* a = dynamic_cast<AssVita*>(it->get());
+    if(a){
+        QGraphicsTextItem *lpremio = addText("Premio da pagare:");
+        lpremio->setPos(30,305);
+        lpremio->setFont(*l);
+        addItem(lpremio);
+
+        QGraphicsTextItem *premio = addText(QString::number(a->calcolaPremio()));
+        premio->setPos(30,350);
+        premio->setFont(*l);
+        addItem(premio);
+
+        connect(this, &contractScene::onHomePress, this, [=](){removeItem(lpremio);removeItem(premio);});
+    }*/
+
+    connect(this, &contractScene::onNextPress, this, [=](){removeItem(title1);removeItem(title2);removeItem(title3);removeItem(codp);removeItem(lnome);removeItem(nome);removeItem(leta);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(ldata);removeItem(data);removeItem(lpremio);removeItem(premio);removeItem(lmassimale);removeItem(massimale);removeItem(indice);});
+    connect(this, &contractScene::onPreviousPress, this, [=](){removeItem(title1);removeItem(title2);removeItem(title3);removeItem(codp);removeItem(lnome);removeItem(nome);removeItem(leta);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(ldata);removeItem(data);removeItem(lpremio);removeItem(premio);removeItem(lmassimale);removeItem(massimale);removeItem(indice);});
+    connect(this, &contractScene::onDeletePress, this, [=](){removeItem(title1);removeItem(title2);removeItem(title3);removeItem(codp);removeItem(lnome);removeItem(nome);removeItem(leta);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(ldata);removeItem(data);removeItem(lpremio);removeItem(premio);removeItem(lmassimale);removeItem(massimale);removeItem(indice);});
+    connect(this, &contractScene::onHomePress, this, [=](){removeItem(title1);removeItem(title2);removeItem(title3);removeItem(codp);removeItem(lnome);removeItem(nome);removeItem(leta);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(ldata);removeItem(data);removeItem(lpremio);removeItem(premio);removeItem(lmassimale);removeItem(massimale);removeItem(indice);});
+
 }
 
 void contractScene::loadEmptyUser()
 {
     QFont* t=new QFont();
-    t->setPointSize(15);
+    t->setPointSize(30);
 
     QGraphicsTextItem *indice = addText("Non ci sono utenti salvati nel database");
-    indice->setPos(400,400);
+    indice->setPos(200,200);
     indice->setFont(*t);
     addItem(indice);
 }

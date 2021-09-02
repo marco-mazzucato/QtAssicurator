@@ -14,7 +14,6 @@ public:
     const double& getCosto() const;
 
     virtual double calcolaFranchigia() const = 0;
-    virtual AssBeni* clone() const =0; //non so se sia giusta
 };
 
 #endif // ASSBENI_H
