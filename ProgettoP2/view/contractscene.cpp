@@ -146,7 +146,7 @@ void contractScene::loadUser(Vector<DeepPtr<Assicurazione>>::iterator it, int c,
         lcilindrata->setFont(*l);
         addItem(lcilindrata);
 
-        QGraphicsTextItem *cilindrata = addText(QString::number(r->getCilindrata()));
+        QGraphicsTextItem *cilindrata = addText(QString::number(r->getCilindrata())+"cc");
         cilindrata->setPos(170,315);
         cilindrata->setFont(*t);
         addItem(cilindrata);
