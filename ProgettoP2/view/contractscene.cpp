@@ -56,6 +56,11 @@ void contractScene::loadUser(Vector<DeepPtr<Assicurazione>>::iterator it, int c,
     codp->setFont(*s);
     addItem(codp);
 
+    QGraphicsTextItem *indice = addText(QString::number(c)+"/"+QString::number(max));
+    indice->setPos(1150,30);
+    indice->setFont(*s);
+    addItem(indice);
+
     QGraphicsTextItem *lnome= new QGraphicsTextItem("Nome:");
     lnome->setPos(30,85);
     lnome->setFont(*l);
@@ -96,59 +101,150 @@ void contractScene::loadUser(Vector<DeepPtr<Assicurazione>>::iterator it, int c,
     data->setFont(*t);
     addItem(data);
 
-    QGraphicsTextItem *title3 = addText("Informazioni assicurazione");
-    title3->setPos(30,265);
-    title3->setFont(*s);
-    addItem(title3);
+    AssVita* v = dynamic_cast<AssVita*>(it->get());
+    if(v){
+        QGraphicsTextItem *titlev = addText("Informazioni assicurazione vita");
+        titlev->setPos(30,265);
+        titlev->setFont(*s);
+        addItem(titlev);
+
+        QGraphicsTextItem *lfascia = addText("Fascia appartenenza:");
+        lfascia->setPos(30,320);
+        lfascia->setFont(*l);
+        addItem(lfascia);
+
+        QGraphicsTextItem *fascia = addText(QChar(v->getFascia()));
+        fascia->setPos(190,315);
+        fascia->setFont(*t);
+        addItem(fascia);
+
+        QGraphicsTextItem *limporto = addText("Importo versato:");
+        limporto->setPos(30,360);
+        limporto->setFont(*l);
+        addItem(limporto);
+
+        QGraphicsTextItem *importo = addText(QString::number(v->getImporto()));
+        importo->setPos(190,355);
+        importo->setFont(*t);
+        addItem(importo);
+
+        connect(this, &contractScene::onNextPress, this, [=](){removeItem(titlev);removeItem(lfascia);removeItem(fascia);removeItem(limporto);removeItem(importo);});
+        connect(this, &contractScene::onPreviousPress, this, [=](){removeItem(titlev);removeItem(lfascia);removeItem(fascia);removeItem(limporto);removeItem(importo);});
+        connect(this, &contractScene::onDeletePress, this, [=](){removeItem(titlev);removeItem(lfascia);removeItem(fascia);removeItem(limporto);removeItem(importo);});
+        connect(this, &contractScene::onHomePress, this, [=](){removeItem(titlev);removeItem(lfascia);removeItem(fascia);removeItem(limporto);removeItem(importo);});
+    }
+
+   RCA* r = dynamic_cast<RCA*>(it->get());
+    if(r){
+        QGraphicsTextItem *titler = addText("Informazioni assicurazione RCA");
+        titler->setPos(30,265);
+        titler->setFont(*s);
+        addItem(titler);
+
+        QGraphicsTextItem *lcilindrata = addText("Cilindrata veicolo:");
+        lcilindrata->setPos(30,320);
+        lcilindrata->setFont(*l);
+        addItem(lcilindrata);
+
+        QGraphicsTextItem *cilindrata = addText(QString::number(r->getCilindrata()));
+        cilindrata->setPos(170,315);
+        cilindrata->setFont(*t);
+        addItem(cilindrata);
+
+        QGraphicsTextItem *lcavalli = addText("Cavalli veicolo:");
+        lcavalli->setPos(30,360);
+        lcavalli->setFont(*l);
+        addItem(lcavalli);
+
+        QGraphicsTextItem *cavalli = addText(QString::number(r->getCavalli()));
+        cavalli->setPos(170,355);
+        cavalli->setFont(*t);
+        addItem(cavalli);
+
+        connect(this, &contractScene::onNextPress, this, [=](){removeItem(titler);removeItem(lcilindrata);removeItem(cilindrata);removeItem(lcavalli);removeItem(cavalli);});
+        connect(this, &contractScene::onPreviousPress, this, [=](){removeItem(titler);removeItem(lcilindrata);removeItem(cilindrata);removeItem(lcavalli);removeItem(cavalli);});
+        connect(this, &contractScene::onDeletePress, this, [=](){removeItem(titler);removeItem(lcilindrata);removeItem(cilindrata);removeItem(lcavalli);removeItem(cavalli);});
+        connect(this, &contractScene::onHomePress, this, [=](){removeItem(titler);removeItem(lcilindrata);removeItem(cilindrata);removeItem(lcavalli);removeItem(cavalli);});
+    }
+
+    AssImmobili* i = dynamic_cast<AssImmobili*>(it->get());
+     if(i){
+         QGraphicsTextItem *titlei = addText("Informazioni assicurazione immobili");
+         titlei->setPos(30,265);
+         titlei->setFont(*s);
+         addItem(titlei);
+
+         QGraphicsTextItem *lcomune = addText("Comune immobile:");
+         lcomune->setPos(30,320);
+         lcomune->setFont(*l);
+         addItem(lcomune);
+
+         QGraphicsTextItem *comune = addText(QString::fromStdString(i->getComune()));
+         comune->setPos(170,315);
+         comune->setFont(*t);
+         addItem(comune);
+
+         QGraphicsTextItem *lmetri = addText("Metri quadrati:");
+         lmetri->setPos(30,360);
+         lmetri->setFont(*l);
+         addItem(lmetri);
+
+         QGraphicsTextItem *metri = addText(QString::number(i->getMq()));
+         metri->setPos(170,355);
+         metri->setFont(*t);
+         addItem(metri);
+
+         connect(this, &contractScene::onNextPress, this, [=](){removeItem(titlei);removeItem(lcomune);removeItem(comune);removeItem(lmetri);removeItem(metri);});
+         connect(this, &contractScene::onPreviousPress, this, [=](){removeItem(titlei);removeItem(lcomune);removeItem(comune);removeItem(lmetri);removeItem(metri);});
+         connect(this, &contractScene::onDeletePress, this, [=](){removeItem(titlei);removeItem(lcomune);removeItem(comune);removeItem(lmetri);removeItem(metri);});
+         connect(this, &contractScene::onHomePress, this, [=](){removeItem(titlei);removeItem(lcomune);removeItem(comune);removeItem(lmetri);removeItem(metri);});
+     }
 
     QGraphicsTextItem *lpremio = addText("Premio da pagare:");
-    lpremio->setPos(30,320);
-    lpremio->setFont(*l);
+    lpremio->setPos(500,80);
+    lpremio->setFont(*s);
     addItem(lpremio);
 
     QGraphicsTextItem *premio = addText(QString::number((*it)->calcolaPremio())+" €");
-    premio->setPos(170,315);
-    premio->setFont(*t);
+    premio->setPos(750,80);
+    premio->setFont(*s);
     addItem(premio);
 
-    QGraphicsTextItem *lmassimale = addText("Massimale pagato");
-    lmassimale->setPos(30,360);
-    lmassimale->setFont(*l);
+    QGraphicsTextItem *lmassimale = addText("Massimale pagato:");
+    lmassimale->setPos(500,130);
+    lmassimale->setFont(*s);
     addItem(lmassimale);
 
     QGraphicsTextItem *massimale = addText(QString::number((*it)->calcolaMassimale())+" €");
-    massimale->setPos(170,355);
-    massimale->setFont(*t);
+    massimale->setPos(750,130);
+    massimale->setFont(*s);
     addItem(massimale);
 
-    QGraphicsTextItem *indice = addText(QString::number(c)+"/"+QString::number(max));
-    indice->setPos(1100,30);
-    indice->setFont(*t);
-    addItem(indice);
-
-
-
-
-
-   /* AssVita* a = dynamic_cast<AssVita*>(it->get());
+    AssBeni* a = dynamic_cast<AssBeni*>(it->get());
     if(a){
-        QGraphicsTextItem *lpremio = addText("Premio da pagare:");
-        lpremio->setPos(30,305);
-        lpremio->setFont(*l);
-        addItem(lpremio);
+        QGraphicsTextItem *lfranchigia = addText("Franchigia:");
+        lfranchigia->setPos(500,180);
+        lfranchigia->setFont(*s);
+        addItem(lfranchigia);
 
-        QGraphicsTextItem *premio = addText(QString::number(a->calcolaPremio()));
-        premio->setPos(30,350);
-        premio->setFont(*l);
-        addItem(premio);
+        QGraphicsTextItem *franchigia = addText(QString::number(a->calcolaFranchigia()));
+        franchigia->setPos(650,180);
+        franchigia->setFont(*s);
+        addItem(franchigia);
 
-        connect(this, &contractScene::onHomePress, this, [=](){removeItem(lpremio);removeItem(premio);});
-    }*/
+        connect(this, &contractScene::onNextPress, this, [=](){removeItem(lfranchigia);removeItem(franchigia);});
+        connect(this, &contractScene::onPreviousPress, this, [=](){removeItem(lfranchigia);removeItem(franchigia);});
+        connect(this, &contractScene::onDeletePress, this, [=](){removeItem(lfranchigia);removeItem(franchigia);});
+        connect(this, &contractScene::onHomePress, this, [=](){removeItem(lfranchigia);removeItem(franchigia);});
+    }
 
-    connect(this, &contractScene::onNextPress, this, [=](){removeItem(title1);removeItem(title2);removeItem(title3);removeItem(codp);removeItem(lnome);removeItem(nome);removeItem(leta);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(ldata);removeItem(data);removeItem(lpremio);removeItem(premio);removeItem(lmassimale);removeItem(massimale);removeItem(indice);});
-    connect(this, &contractScene::onPreviousPress, this, [=](){removeItem(title1);removeItem(title2);removeItem(title3);removeItem(codp);removeItem(lnome);removeItem(nome);removeItem(leta);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(ldata);removeItem(data);removeItem(lpremio);removeItem(premio);removeItem(lmassimale);removeItem(massimale);removeItem(indice);});
-    connect(this, &contractScene::onDeletePress, this, [=](){removeItem(title1);removeItem(title2);removeItem(title3);removeItem(codp);removeItem(lnome);removeItem(nome);removeItem(leta);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(ldata);removeItem(data);removeItem(lpremio);removeItem(premio);removeItem(lmassimale);removeItem(massimale);removeItem(indice);});
-    connect(this, &contractScene::onHomePress, this, [=](){removeItem(title1);removeItem(title2);removeItem(title3);removeItem(codp);removeItem(lnome);removeItem(nome);removeItem(leta);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(ldata);removeItem(data);removeItem(lpremio);removeItem(premio);removeItem(lmassimale);removeItem(massimale);removeItem(indice);});
+
+
+
+    connect(this, &contractScene::onNextPress, this, [=](){removeItem(title1);removeItem(title2);removeItem(codp);removeItem(lnome);removeItem(nome);removeItem(leta);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(ldata);removeItem(data);removeItem(lpremio);removeItem(premio);removeItem(lmassimale);removeItem(massimale);removeItem(indice);});
+    connect(this, &contractScene::onPreviousPress, this, [=](){removeItem(title1);removeItem(title2);removeItem(codp);removeItem(lnome);removeItem(nome);removeItem(leta);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(ldata);removeItem(data);removeItem(lpremio);removeItem(premio);removeItem(lmassimale);removeItem(massimale);removeItem(indice);});
+    connect(this, &contractScene::onDeletePress, this, [=](){removeItem(title1);removeItem(title2);removeItem(codp);removeItem(lnome);removeItem(nome);removeItem(leta);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(ldata);removeItem(data);removeItem(lpremio);removeItem(premio);removeItem(lmassimale);removeItem(massimale);removeItem(indice);});
+    connect(this, &contractScene::onHomePress, this, [=](){removeItem(title1);removeItem(title2);removeItem(codp);removeItem(lnome);removeItem(nome);removeItem(leta);removeItem(eta);removeItem(lcodf);removeItem(codf);removeItem(ldata);removeItem(data);removeItem(lpremio);removeItem(premio);removeItem(lmassimale);removeItem(massimale);removeItem(indice);});
 
 }
 
