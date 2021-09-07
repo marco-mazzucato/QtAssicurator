@@ -3,26 +3,26 @@
 contractScene::contractScene()
 {
     setSceneRect(0,0,1280,720);
-    setBackgroundBrush(Qt::lightGray);
+    setBackgroundBrush(QColor(188, 210, 238));
 
     QPushButton* avanti = new QPushButton("Avanti");
     avanti->setGeometry(1000,570, 200,90);
-    avanti->setStyleSheet("font-size:25px;""background-color:grey;");
+    avanti->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     addWidget(avanti);
 
     QPushButton* indietro = new QPushButton("Indietro");
     indietro->setGeometry(790,570, 200,90);
-    indietro->setStyleSheet("font-size:25px;""background-color:grey;");
+    indietro->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     addWidget(indietro);
 
     QPushButton* elimina = new QPushButton("Rimuovi assicurazione");
     elimina->setGeometry(790,430,410,100);
-    elimina->setStyleSheet("font-size:25px;""background-color:grey;");
+    elimina->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     addWidget(elimina);
 
     QPushButton* home = new QPushButton("Home");
     home->setGeometry(30,570,200,100);
-    home->setStyleSheet("font-size:25px;""background-color:grey;");
+    home->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     addWidget(home);
 
     connect(avanti, &QPushButton::clicked, this, &contractScene::onNextPress);

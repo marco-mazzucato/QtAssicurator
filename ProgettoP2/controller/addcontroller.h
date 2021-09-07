@@ -5,7 +5,6 @@
 #include <view/addscene.h>
 #include <QObject>
 
-
 class addController : public controller
 {
     Q_OBJECT

@@ -2,7 +2,6 @@
 #define CONTROLLER_H
 #include <QGraphicsScene>
 
-
 class controller: public QObject
 {
     Q_OBJECT

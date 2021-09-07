@@ -1,6 +1,5 @@
 #ifndef MAINSCENE_H
 #define MAINSCENE_H
-
 #include <QGraphicsScene>
 #include <QPushButton>
 #include <QGraphicsTextItem>

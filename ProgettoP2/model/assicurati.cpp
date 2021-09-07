@@ -23,19 +23,11 @@ int Assicurati::getNewId() const
     return maxid+1;
 }
 
-Vector<DeepPtr<Assicurazione>>::iterator Assicurati::getBegin()
-{
-    return Ass.begin();
-}
+Vector<DeepPtr<Assicurazione>>::iterator Assicurati::getBegin() {return Ass.begin();}
 
-Vector<DeepPtr<Assicurazione>>::iterator Assicurati::getEnd()
-{
-    return Ass.end();
-}
+Vector<DeepPtr<Assicurazione>>::iterator Assicurati::getEnd() {return Ass.end();}
 
-int Assicurati::getSize() const{
-    return Ass.size();
-}
+int Assicurati::getSize() const {return Ass.size();}
 
 void Assicurati::addAss(Assicurazione *a) {Ass.push_back(a);}
 

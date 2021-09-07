@@ -7,7 +7,7 @@ class AssImmobili: public AssBeni
 private:
     std::string comune;
     unsigned int mq;
-    bool edificio; // true se edificio altrimenti terreno
+    bool edificio;
 public:
     AssImmobili(std::string, std::string, std::string, unsigned int, int, QDate, double, std::string, unsigned int, bool);
     AssImmobili(const AssImmobili&);

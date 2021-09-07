@@ -3,7 +3,7 @@
 mainScene::mainScene()
 {
     setSceneRect(0,0,1280,720);
-    setBackgroundBrush(Qt::lightGray);
+    setBackgroundBrush(QColor(188, 210, 238));
     QFont* s=new QFont();
     s->setPointSize(70);
 
@@ -15,13 +15,13 @@ mainScene::mainScene()
 
     QPushButton* add = new QPushButton("Aggiungi assicurazione");
     add->setGeometry(width()/2-500,height()/2+50,400,120);
-    add->setStyleSheet("font-size:25px;""background-color:grey;");
+    add->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     addWidget(add);
     connect(add,&QPushButton::clicked,this, &mainScene::onAddPress);
 
     QPushButton* search = new QPushButton("Ricerca assicurazioni");
     search->setGeometry(width()/2,height()/2+50,400,120);
-    search->setStyleSheet("font-size:25px;""background-color:grey;");
+    search->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     addWidget(search);
     connect(search,&QPushButton::clicked,this, &mainScene::onSearchPress);
 }

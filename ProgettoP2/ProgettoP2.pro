@@ -26,15 +26,12 @@ SOURCES += \
     model/assicurazione.cpp \
     model/assimmobili.cpp \
     model/assvita.cpp \
-    model/deepptr.cpp \
     main.cpp \
     view/contractscene.cpp \
     view/mainscene.cpp \
     view/mainwindow.cpp \
     view/mainwindowview.cpp \
-    model/rca.cpp \
-    model/vector.cpp \
-    view/viewscene.cpp
+    model/rca.cpp
 
 HEADERS += \
     controller/addcontroller.h \
@@ -53,8 +50,7 @@ HEADERS += \
     view/mainwindow.h \
     view/mainwindowview.h \
     model/rca.h \
-    model/vector.h \
-    view/viewscene.h
+    model/vector.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

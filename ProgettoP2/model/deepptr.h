@@ -26,10 +26,6 @@ public:
      void swap(DeepPtr&);
 };
 
-/*template<class T>
-std::ostream& operator<<(std::ostream&, const DeepPtr<T>&);*/
-
-
 template<class T>
 DeepPtr<T>::DeepPtr(T* t): info(t==nullptr ? nullptr : t->clone()){}
 
@@ -99,10 +95,5 @@ template<class T>
 std::ostream& operator<<(std::ostream& os, const DeepPtr<T>& dp){
     return os<<*dp;
 }
-
-
-
-
-
 
 #endif // DEEPPTR_H

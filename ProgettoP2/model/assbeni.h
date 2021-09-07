@@ -15,5 +15,4 @@ public:
 
     virtual double calcolaFranchigia() const = 0;
 };
-
 #endif // ASSBENI_H

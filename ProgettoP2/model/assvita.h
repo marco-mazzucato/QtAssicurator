@@ -2,10 +2,10 @@
 #define ASSVITA_H
 #include "assicurazione.h"
 
-class AssVita: public Assicurazione // assicurazione di 10 anni il premio ogni anno
+class AssVita: public Assicurazione
 {
 private:
-    char fascia; // A B C D dal piu facoltoso
+    char fascia;
     double importoVersato;
 public:
     AssVita(std::string, std::string, std::string, unsigned int, int, QDate, char, double);

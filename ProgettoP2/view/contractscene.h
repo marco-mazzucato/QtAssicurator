@@ -6,7 +6,6 @@
 #include <QLabel>
 #include <QGraphicsTextItem>
 
-
 class contractScene : public QGraphicsScene
 {
     Q_OBJECT

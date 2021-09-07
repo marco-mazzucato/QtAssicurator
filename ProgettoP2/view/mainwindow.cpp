@@ -4,7 +4,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), view(new mainwindowview()), m(new Assicurati()), ac(new addController(m)), cc(new contractController(m)), mc(new mainController()), c(mc)
 {
     setMinimumSize(QSize(1280,720));
-    resize(QSize(1280,720));
+    resize(QSize(960,540));
     setCentralWidget(view);
     view->setScene(c->getScene());
     connect(ac, &addController::changeScene, this, &MainWindow::updateScene);
@@ -12,9 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(cc, &contractController::changeScene, this, &MainWindow::updateScene);
 }
 
-MainWindow::~MainWindow()
-{
-}
+MainWindow::~MainWindow(){}
 
 void MainWindow::updateScene(char ch)
 {

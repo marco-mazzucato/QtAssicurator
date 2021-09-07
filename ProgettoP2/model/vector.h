@@ -65,9 +65,6 @@ public:
     void clear();
 };
 
-/*template<class T>
-std::ostream& operator<<(std::ostream&, const Vector<T>&);*/
-
 template<class T>
 Vector<T>::Vector():cap(1), _size(0), info(new T[1]){}
 
@@ -268,9 +265,6 @@ std::ostream& operator<<(std::ostream& os, const Vector<T>& v){
         os<<*it<<" ";
     return os;
 }
-
-
-
 
 #endif // VECTOR_H
 

@@ -1,10 +1,9 @@
 #include "addscene.h"
-#include <qdebug.h>
 
 addScene::addScene(): vita(new QPushButton("Nuova assicurazione vita")), rca(new QPushButton("Nuova assicurazione RCA")), imm(new QPushButton("Nuova assicurazione immobili")), _nome(new QLineEdit()), _cognome(new QLineEdit()), _codf(new QLineEdit()), _eta(new QLineEdit()), _impVers(new QLineEdit()), _costoB(new QLineEdit()), _cil(new QLineEdit()), _cav(new QLineEdit()), _com(new QLineEdit()), _mq(new QLineEdit()), _fascia(new QComboBox()), _neo(new QCheckBox("Neopatentato")), _edi(new QCheckBox("Edificio")), fascia(new QLabel()), impVers(new QLabel()), costoB(new QLabel()), cil(new QLabel()), cav(new QLabel()), com(new QLabel()), mq(new QLabel()), _data(new QDateTimeEdit(QDate::currentDate())), lastPressed('n')
 {
     setSceneRect(0,0,1280,720);
-    setBackgroundBrush(Qt::lightGray);
+    setBackgroundBrush(QColor(188, 210, 238));
     QRegExp chr("[a-zA-Z]*");
         QValidator* chrVal = new QRegExpValidator(chr);
     QRegExp cf("^[a-zA-Z]{6,6}\\d{2,2}[a-zA-Z]\\d{2,2}[a-zA-Z]\\d{3,3}[a-zA-Z]$");
@@ -15,15 +14,15 @@ addScene::addScene(): vita(new QPushButton("Nuova assicurazione vita")), rca(new
             QValidator* euVal = new QRegExpValidator(eu);
 
     vita->setGeometry(50,50,350,150);
-    vita->setStyleSheet("font-size:25px;""background-color:grey;");
+    vita->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     addWidget(vita);
 
     rca->setGeometry(450,50,350,150);
-    rca->setStyleSheet("font-size:25px;""background-color:grey;");
+    rca->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     addWidget(rca);
 
     imm->setGeometry(850,50,350,150);
-    imm->setStyleSheet("font-size:25px;""background-color:grey;");
+    imm->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     addWidget(imm);
 
     QLabel* nome = new QLabel();
@@ -79,7 +78,7 @@ addScene::addScene(): vita(new QPushButton("Nuova assicurazione vita")), rca(new
 
     _data->setMinimumDate(QDate::currentDate().addDays(-365));
     _data->setGeometry(200, 410, 200, 30);
-    _data->setStyleSheet("font-size:17px;""background-color:rgba(255,255,255,0);");
+    _data->setStyleSheet("font-size:17px;""background-color:white;");
     _data->setDisplayFormat("dd.MM.yyyy");
     addWidget(_data);
 
@@ -182,12 +181,12 @@ addScene::addScene(): vita(new QPushButton("Nuova assicurazione vita")), rca(new
 
     QPushButton* agg = new QPushButton("Aggiungi assicurazione");
     agg->setGeometry(900,360,300,150);
-    agg->setStyleSheet("font-size:25px;""background-color:grey;");
+    agg->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     addWidget(agg);
 
     QPushButton* home = new QPushButton("Home");
     home->setGeometry(1000,570,200,100);
-    home->setStyleSheet("font-size:25px;""background-color:grey;");
+    home->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     addWidget(home);
 
     connect(agg, &QPushButton::clicked, this, &addScene::onAggPress);
@@ -255,7 +254,7 @@ bool addScene::isNeo() const
 
 std::string addScene::getComune() const
 {
-    return _com->text().toLocal8Bit().constData();//controllare
+    return _com->text().toLocal8Bit().constData();
 }
 
 unsigned int addScene::getMq() const
@@ -300,7 +299,6 @@ void addScene::showSuccess()
     msg->setStyleSheet("border: solid 3px; "
                        "font-size: 23px;"
                        "padding: 10px;"
-                       " border-radius: 15px; "
                        "background: rgba(255,255,255,0.1); "
                        "color:green;");
     addWidget(msg);
@@ -313,14 +311,14 @@ void addScene::showVita()
 {
     if(lastPressed=='v'){
         lastPressed='n';
-        vita->setStyleSheet("font-size:25px;""background-color:grey;");
+        vita->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     }
     else{
         lastPressed='v';
-        vita->setStyleSheet("font-size:25px;""background-color:azure;");
+        vita->setStyleSheet("font-size:25px;""background-color:#CAE1FF;");
     }
-    rca->setStyleSheet("font-size:25px;""background-color:grey;");
-    imm->setStyleSheet("font-size:25px;""background-color:grey;");
+    rca->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
+    imm->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     fascia->setVisible(!fascia->isVisible());
     _fascia->setVisible(!_fascia->isVisible());
     impVers->setVisible(!impVers->isVisible());
@@ -343,14 +341,14 @@ void addScene::showVita()
 void addScene::showRCA(){
     if(lastPressed=='a'){
         lastPressed='n';
-        rca->setStyleSheet("font-size:25px;""background-color:grey;");
+        rca->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     }
     else{
         lastPressed='a';
-        rca->setStyleSheet("font-size:25px;""background-color:azure;");
+        rca->setStyleSheet("font-size:25px;""background-color:#CAE1FF;");
     }
-    vita->setStyleSheet("font-size:25px;""background-color:grey;");
-    imm->setStyleSheet("font-size:25px;""background-color:grey;");
+    vita->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
+    imm->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     costoB->setVisible(true);
     _costoB->setVisible(true);
     cil->setVisible(!cil->isVisible());
@@ -372,14 +370,14 @@ void addScene::showRCA(){
 void addScene::showImm(){
     if(lastPressed=='i'){
         lastPressed='n';
-        imm->setStyleSheet("font-size:25px;""background-color:grey;");
+        imm->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     }
     else{
         lastPressed='i';
-        imm->setStyleSheet("font-size:25px;""background-color:azure;");
+        imm->setStyleSheet("font-size:25px;""background-color:#CAE1FF;");
     }
-    rca->setStyleSheet("font-size:25px;""background-color:grey;");
-    vita->setStyleSheet("font-size:25px;""background-color:grey;");
+    rca->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
+    vita->setStyleSheet("font-size:25px;""background-color:#6E7B8B;");
     costoB->setVisible(true);
     _costoB->setVisible(true);
     com->setVisible(!com->isVisible());
@@ -403,9 +401,9 @@ void addScene::resetField()
     switch(lastPressed){
         case 'v': showVita();
         break;
-    case 'a': showRCA();
+        case 'a': showRCA();
         break;
-    case 'i': showImm();
+        case 'i': showImm();
         break;
     }
     _nome->setText("");

@@ -1,6 +1,5 @@
 #ifndef MAINWINDOWVIEW_H
 #define MAINWINDOWVIEW_H
-
 #include <QGraphicsView>
 
 class mainwindowview : public QGraphicsView

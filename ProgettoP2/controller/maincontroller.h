@@ -1,6 +1,5 @@
 #ifndef MAINCONTROLLER_H
 #define MAINCONTROLLER_H
-
 #include "controller.h"
 #include "view/mainscene.h"
 

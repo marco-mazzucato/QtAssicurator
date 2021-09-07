@@ -5,7 +5,7 @@
 #include "rca.h"
 #include "assimmobili.h"
 #include "vector.h"
-#include "deepptr.h" // vedere cosa manca includere
+#include "deepptr.h"
 
 class Assicurati: public QObject
 {
@@ -21,10 +21,7 @@ public:
     int getSize() const;
 
 public slots:
-
     void addAss(Assicurazione*);
     void removeAss(int);
-
 };
-
 #endif // ASSICURATI_H

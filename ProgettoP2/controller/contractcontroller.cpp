@@ -13,7 +13,7 @@ void contractController::deleteMember()
 {
     int max(model->getSize());
     if(max){
-        if(max-count){ //max-count>0
+        if(max-count){
             int elimina = (*it)->getCodPolizza();
             ++it;
             int riprendi = (*it)->getCodPolizza();
@@ -26,7 +26,7 @@ void contractController::deleteMember()
                 ++it;
             view->loadUser(it,count,model->getSize());
         }
-        else{ //max-count=0
+        else{
             int elimina = (*it)->getCodPolizza();
             if(max!=1)
             {
